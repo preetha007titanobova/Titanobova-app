@@ -1,4 +1,5 @@
 import React from 'react'
+import Header from './Nav/Header'
 import Home from './home'
 import About from './About'
 
@@ -14,10 +15,11 @@ const Alldata = () => {
      
       }}
     >
-      {/* Wrap content that shouldn't scroll horizontally */}
+     
       <div style={{ overflowX: 'hidden' }}>
-        <Home/> 
-      <About/>
+   
+      
+      <Home/>
       </div>
     </div>
   )

@@ -1,6 +1,6 @@
 import React from "react";
 
-
+import Router from "./Router"
 import Alldata from "./Alldata";
 
 function App() {
@@ -17,7 +17,7 @@ const overlayStyle = {
          <div style={overlayStyle}>
 
       <div style={{ position: "relative", zIndex: 1 }}>
-        <Alldata />
+        <Router/>
       </div>
    </div>
   );
