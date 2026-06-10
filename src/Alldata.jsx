@@ -19,7 +19,7 @@ const Alldata = () => {
       <div style={{ overflowX: 'hidden' }}>
    
       
-      <Home/>
+      {/* <Home/> */}
       </div>
     </div>
   )

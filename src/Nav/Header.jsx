@@ -1,95 +1,143 @@
-import React from "react";
-import { AppBar, Toolbar, Typography, Grid, Link } from "@mui/material";
+import React, { useState } from "react";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Link,
+  Button,
+  Box,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+} from "@mui/material";
+
+import MenuIcon from "@mui/icons-material/Menu";
 
 const Header = () => {
+  const [open, setOpen] = useState(false);
+
+const menuItems = [
+  {
+    text: "Home",
+    link: "/home",
+    submenu: [
+      { text: "Who We Are", link: "/who-we-are" },
+    ],
+  },
+  { text: "About", link: "/about" },
+  { text: "Projects", link: "/project" },
+  { text: "Courses", link: "/courses" },
+  { text: "Contact Us", link: "/contact" },
+];
+
   return (
-    <AppBar
-      position="static"
-      sx={{
-        bgcolor: "white",
-      }}
-    >
-      <Toolbar
+    <>
+      <AppBar
+        position="static"
         sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          py: 2,
+          bgcolor: "white",
+          px: 2,
         }}
       >
-        <Grid container spacing={4} justifyContent="center">
-          <Grid item>
-            <Typography variant="body1">
-              <Link
-                href="/home"
-                 color= "black"
-                underline="none"
-                sx={{
-                  "&:hover": {
-                    color: "black",
-                    textDecoration: "underline",
-                  },
-                }}
-              >
-                Home
-              </Link>
-            </Typography>
-          </Grid>
+        <Toolbar
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          {/* Logo */}
+          <Typography
+            variant="h6"
+            sx={{
+              color: "black",
+              fontWeight: "bold",
+            }}
+          >
+            Titanobova
+          </Typography>
 
-          <Grid item>
-            <Typography variant="body1">
+          {/* Desktop Menu */}
+          <Box
+            sx={{
+              display: { xs: "none", md: "flex" },
+              gap: 4,
+              alignItems: "center",
+            }}
+          >
+            {menuItems.map((item, index) => (
               <Link
-                href="/aboutus"
-                 color= "black"
+                key={index}
+                href={item.link}
                 underline="none"
+                color="black"
                 sx={{
+                  fontSize: "16px",
                   "&:hover": {
-                   color: "black",
                     textDecoration: "underline",
                   },
                 }}
               >
-                About
+                {item.text}
               </Link>
-            </Typography>
-          </Grid>
-       <Grid item>
-            <Typography variant="body1">
-              <Link
-                href="/aboutus"
-                color= "black"
-                underline="none"
-                sx={{
-                  "&:hover": {
-                   color: "black",
-                    textDecoration: "underline",
-                  },
-                }}
+            ))}
+
+            <Button variant="contained">
+              Let's Talk
+            </Button>
+          </Box>
+
+          {/* Mobile Hamburger */}
+          <IconButton
+            sx={{
+              display: { xs: "block", md: "none" },
+              color: "black",
+            }}
+            onClick={() => setOpen(true)}
+          >
+            <MenuIcon />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+
+      {/* Mobile Drawer */}
+      <Drawer
+        anchor="right"
+        open={open}
+        onClose={() => setOpen(false)}
+      >
+        <Box
+          sx={{
+            width: 150,
+            p: 2,
+          }}
+        >
+          <List>
+            {menuItems.map((item, index) => (
+              <ListItem
+                button
+                key={index}
+                component="a"
+                href={item.link}
+                
               >
-          Projects
-              </Link>
-            </Typography>
-          </Grid>
-          <Grid item>
-            <Typography variant="body1">
-              <Link
-                href="/contact"
-                 color= "black"
-                underline="none"
-                sx={{
-                  "&:hover": {
-                    color: "black",
-                    textDecoration: "underline",
-                  },
-                }}
-              >
-                Contact Us
-              </Link>
-            </Typography>
-          </Grid>
-        </Grid>
-      </Toolbar>
-    </AppBar>
+                <ListItemText primary={item.text} />
+              </ListItem>
+            ))}
+
+            <Button
+              variant="contained"
+              fullWidth
+              sx={{ mt: 2 }}
+            >
+              Let's Talk
+            </Button>
+          </List>
+        </Box>
+      </Drawer>
+    </>
   );
 };
 
