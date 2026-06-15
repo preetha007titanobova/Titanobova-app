@@ -84,7 +84,7 @@ const menuItems = [
               </Link>
             ))}
 
-            <Button variant="contained">
+            <Button variant="contained"     onClick={() => (window.location.href = "/conversation")} >
               Let's Talk
             </Button>
           </Box>

@@ -9,12 +9,15 @@ import Contact from "./Contact";
 import Alldata from "./Alldata";
 import Learn from "./Learn";
 import Courses from "./Courses";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import WhoWeAre from "./WhoWeAre";
+import Conversation from "./Conversation";
 function App() {
   return (
     <>
     
-
+ <ToastContainer />
   
   <Header/>
 
@@ -29,9 +32,11 @@ function App() {
             <>
              
     <Home/>
+       
          </>
           }
         />
+        <Route path = "/conversation" element ={<Conversation/>}/>
         <Route path="/who-we-are" element={<WhoWeAre/>}/>
         <Route path="/learn" element={<Learn/>}/>
         <Route path="/about" element={<About />} />

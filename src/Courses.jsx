@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Box, Typography, Chip, Avatar, Button } from "@mui/material";
 import { keyframes } from "@mui/system";
 import Course from "./assets/Course.png";
-
+import CouponEnrollment from "./Coupon.jsx";
 const courses = [
   {
     id: 1,
@@ -373,7 +373,7 @@ const Courses = () => {
               Corporate Upskilling & Industrial Mastery
             </Typography>
           </Box>
-
+<CouponEnrollment/>
           <Typography
             sx={{
               fontWeight: 900,

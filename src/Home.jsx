@@ -292,6 +292,7 @@ const Home = () => {
                 </Typography>
 
                 <Button
+               onClick={() => (window.location.href = "/conversation")}
                   sx={{
                     mt: 3,
                     minWidth: 58,
