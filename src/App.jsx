@@ -9,10 +9,16 @@ import Contact from "./Contact";
 import Alldata from "./Alldata";
 import Learn from "./Learn";
 import Courses from "./Courses";
+import Coupon from "./Coupon"
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import WhoWeAre from "./WhoWeAre";
 import Conversation from "./Conversation";
+import CourseCoupon from "./Couponcard";
+import Footer from "./Nav/Footer";
+import CustomerSupport from "./customerservice.jsx";
+import technology from "./technology.jsx"
+import TechnologySection from "./technology.jsx";
 function App() {
   return (
     <>
@@ -38,14 +44,17 @@ function App() {
         />
         <Route path = "/conversation" element ={<Conversation/>}/>
         <Route path="/who-we-are" element={<WhoWeAre/>}/>
+        <Route path="/course-fill" element={<Coupon/>}/>
         <Route path="/learn" element={<Learn/>}/>
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/courses" element={<Courses/>}/>
         <Route path="/project" element={<Project />} />
+         <Route path="/customersupport" element={<CustomerSupport/>} />
+        <Route path="/technology" element ={<TechnologySection/>}/>
       </Routes>
 
-  
+  <Footer/>
     </>
   );
 }

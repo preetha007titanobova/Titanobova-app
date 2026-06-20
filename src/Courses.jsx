@@ -1,99 +1,120 @@
+
+import CloudQueueIcon from "@mui/icons-material/CloudQueue";
+import SettingsSuggestIcon from "@mui/icons-material/SettingsSuggest";
+import WebIcon from "@mui/icons-material/Web";
+import StorageIcon from "@mui/icons-material/Storage";
+import CodeIcon from "@mui/icons-material/Code";
+import DnsIcon from "@mui/icons-material/Dns";
+import DataObjectIcon from "@mui/icons-material/DataObject";
 import React, { useState } from "react";
 import { Box, Typography, Chip, Avatar, Button } from "@mui/material";
 import { keyframes } from "@mui/system";
 import Course from "./assets/Course.png";
+import banner2 from "./assets/Banner2.jpg";
 import CouponEnrollment from "./Coupon.jsx";
+import CourseCoupon from "./Couponcard.jsx";
+import PsychologyAltIcon from "@mui/icons-material/PsychologyAlt";
+import CloudSyncIcon from "@mui/icons-material/CloudSync";
+import AccountTreeIcon from "@mui/icons-material/AccountTree";
+import HubIcon from "@mui/icons-material/Hub";
+import WebAssetIcon from "@mui/icons-material/WebAsset";
+import DeveloperModeIcon from "@mui/icons-material/DeveloperMode";
+import CoffeeIcon from "@mui/icons-material/Coffee";
+import TerminalIcon from "@mui/icons-material/Terminal";
+import StorageRoundedIcon from "@mui/icons-material/StorageRounded";
+
 const courses = [
   {
     id: 1,
     title: "Artificial Intelligence & GenAI",
     subtitle:
-      "Master Python, ML, CNN/RNN, LLM fine-tuning, LangChain and Vector DBs.",
-    icon: "🧠",
+      "High-tier Python, statistics, EDA, Machine Learning, CNN/RNN, Scikit-Learn, LLM fine-tuning, LangChain orchestration, Vector Databases using Pinecone, career mentorship, and live capstone engineering.",
+    icon: <PsychologyAltIcon sx={{ fontSize: 42, color: "#6C63FF" }} />,
     level: "Elite",
     duration: "8 Months",
-    tags: ["Python", "LLM", "LangChain"],
+    tags: ["Python", "LLM", "LangChain", "Pinecone"],
   },
   {
     id: 2,
     title: "AWS & Azure Cloud Architecture",
-    subtitle: "Learn IAM, VPC, S3, serverless Lambda and cloud automation.",
-    icon: "☁️",
+    subtitle:
+      "Scalable corporate infrastructure, IAM control, VPC segmentation, S3 storage, serverless Lambda computing, and cloud automation using CloudFormation.",
+    icon: <CloudSyncIcon sx={{ fontSize: 42, color: "#00A8E8" }} />,
     level: "Advanced",
     duration: "2–3 Months",
-    tags: ["AWS", "Azure", "Lambda"],
+    tags: ["AWS", "Azure", "Lambda", "CloudFormation"],
   },
   {
     id: 3,
     title: "DevOps Architecture Specialist",
     subtitle:
-      "Build CI/CD pipelines using Docker, Kubernetes, Jenkins and Terraform.",
-    icon: "⚙️",
+      "Master containerization, orchestration, CI/CD pipelines, Docker, Kubernetes, Jenkins, Terraform, and enterprise deployment automation.",
+    icon: <AccountTreeIcon sx={{ fontSize: 42, color: "#FF8C42" }} />,
     level: "Advanced",
     duration: "3–4 Months",
-    tags: ["Docker", "Kubernetes", "CI/CD"],
+    tags: ["Docker", "Kubernetes", "Jenkins", "Terraform"],
   },
   {
     id: 4,
     title: "Multi-Cloud Expert Combo",
     subtitle:
-      "Master high-availability hybrid cloud and fault-tolerant systems.",
-    icon: "🌐",
+      "Advanced cross-platform portability, hybrid cloud architecture, high availability systems, and fault-tolerant cloud network strategies.",
+    icon: <HubIcon sx={{ fontSize: 42, color: "#00B894" }} />,
     level: "Elite",
     duration: "5 Months",
-    tags: ["Multi-Cloud", "HA", "Infra"],
+    tags: ["Multi-Cloud", "Hybrid", "HA", "Networks"],
   },
   {
     id: 5,
-    title: "React Application Engineering",
+    title: "Front-End Application Engineering",
     subtitle:
-      "Build component-driven responsive applications with strong state management.",
-    icon: "⚛️",
-    level: "Standard",
-    duration: "Project Based",
-    tags: ["React", "SPA", "State"],
+      "Build modern responsive applications using React, Next.js, Tailwind CSS, advanced UI/UX principles, and production-ready frontend architecture.",
+    icon: <WebAssetIcon sx={{ fontSize: 42, color: "#1565D8" }} />,
+    level: "Professional",
+    duration: "2 Months",
+    tags: ["React", "Next.js", "Tailwind", "UI/UX"],
   },
   {
     id: 6,
-    title: "Node.js High-Concurrency Runtime",
+    title: "MERN Full Stack Development",
     subtitle:
-      "Build non-blocking APIs, custom server runtimes and secure exchanges.",
-    icon: "🟢",
-    level: "Standard",
-    duration: "Project Based",
-    tags: ["Node.js", "API", "Backend"],
+      "Develop complete web applications using MongoDB, Express.js, React.js, and Node.js with real-world project deployment.",
+    icon: <DeveloperModeIcon sx={{ fontSize: 42, color: "#2ECC71" }} />,
+    level: "Professional",
+    duration: "4–6 Months",
+    tags: ["MongoDB", "Express", "React", "Node.js"],
   },
   {
     id: 7,
-    title: "Enterprise UI/UX Product Design",
+    title: "Java Full Stack Engineering",
     subtitle:
-      "Design premium interfaces, wireframes, prototypes and user journeys.",
-    icon: "🎨",
-    level: "Standard",
-    duration: "Project Based",
-    tags: ["Figma", "UI/UX", "Design"],
+      "Build enterprise-grade applications using Java, Spring Boot, REST APIs, Microservices, SQL databases, security frameworks, and scalable backend architectures.",
+    icon: <CoffeeIcon sx={{ fontSize: 42, color: "#F39C12" }} />,
+    level: "Professional",
+    duration: "5–6 Months",
+    tags: ["Java", "Spring Boot", "REST API", "Microservices"],
   },
   {
     id: 8,
-    title: "Advanced Python Automation",
-    subtitle: "Write scalable scripts, automation pipelines and data workflows.",
-    icon: "🐍",
-    level: "Standard",
-    duration: "Project Based",
-    tags: ["Python", "Automation", "Data"],
+    title: "Python Full Stack Engineering",
+    subtitle:
+      "Develop modern web applications using Python, Django/FastAPI, REST APIs, database integration, authentication systems, and scalable cloud-ready deployments.",
+    icon: <TerminalIcon sx={{ fontSize: 42, color: "#3776AB" }} />,
+    level: "Professional",
+    duration: "5–6 Months",
+    tags: ["Python", "Django", "FastAPI", "Backend"],
   },
   {
     id: 9,
-    title: "MongoDB & NoSQL Architecture",
+    title: "Database Engineering & NoSQL Architecture",
     subtitle:
-      "Architect scalable document databases and distributed NoSQL systems.",
-    icon: "🍃",
-    level: "Standard",
+      "Design scalable database systems using MongoDB, SQL, PostgreSQL, NoSQL architectures, indexing, and performance optimization.",
+    icon: <StorageRoundedIcon sx={{ fontSize: 42, color: "#16A085" }} />,
+    level: "Professional",
     duration: "Project Based",
-    tags: ["MongoDB", "NoSQL", "Database"],
+    tags: ["MongoDB", "SQL", "PostgreSQL", "NoSQL"],
   },
 ];
-
 const features = [
   {
     icon: "🚀",
@@ -168,37 +189,41 @@ const CourseCard = ({ course }) => {
   const lvl = levelStyle[course.level] || levelStyle.Standard;
 
   return (
-    <Box
-      sx={{
-        width: "100%",
-        height: "100%",
-        borderRadius: "24px",
-        p: 3,
-        background: "#ffffff",
-        border: "1px solid rgba(21,101,216,0.13)",
-        boxShadow: "0 18px 45px rgba(16,42,67,0.08)",
-        transition: "all 0.35s ease",
-        display: "flex",
-        flexDirection: "column",
-        "&:hover": {
-          transform: "translateY(-10px)",
-          boxShadow: "0 26px 70px rgba(21,101,216,0.18)",
-          borderColor: "#1565d8",
-        },
-      }}
-    >
+ <Box
+  sx={{
+    width: "100%",
+    height: "100%",
+    borderRadius: { xs: "16px", md: "24px" },
+    p: { xs: 3, sm: 2.5, md: 3 },
+ 
+    background: "#ffffff",
+    border: "1px solid rgba(21,101,216,0.13)",
+    boxShadow: "0 18px 45px rgba(16,42,67,0.08)",
+    transition: "all 0.35s ease",
+    display: "flex",
+    flexDirection: "column",
+    "&:hover": {
+      transform: { md: "translateY(-10px)" },
+      boxShadow: "0 26px 70px rgba(21,101,216,0.18)",
+      borderColor: "#1565d8",
+    },
+  }}
+>
       <Box sx={{ display: "flex", justifyContent: "space-between", mb: 2 }}>
-        <Avatar
-          sx={{
-            width: 54,
-            height: 54,
-            bgcolor: "#eaf3ff",
-            color: "#1565d8",
-            fontSize: "1.5rem",
-          }}
-        >
-          {course.icon}
-        </Avatar>
+     <Avatar
+  sx={{
+    width: { xs: 44, sm: 50, md: 54 },
+    height: { xs: 44, sm: 50, md: 54 },
+    bgcolor: "#eaf3ff",
+    color: "#1565d8",
+    fontSize: {
+      xs: "1.2rem",
+      md: "1.5rem",
+    },
+  }}
+>
+  {course.icon}
+</Avatar>
 
         <Chip
           label={course.level}
@@ -212,18 +237,22 @@ const CourseCard = ({ course }) => {
         />
       </Box>
 
-      <Typography
-        sx={{
-          color: "#102a43",
-          fontWeight: 900,
-          fontSize: "1.05rem",
-          fontFamily: "serif",
-          mb: 1,
-          lineHeight: 1.35,
-        }}
-      >
-        {course.title}
-      </Typography>
+   <Typography
+  sx={{
+    color: "#102a43",
+    fontWeight: 900,
+    fontSize: {
+      xs: "0.95rem",
+      sm: "1rem",
+      md: "1.05rem",
+      lg: "1.15rem",
+    },
+    mb: 1,
+    lineHeight: 1.35,
+  }}
+>
+  {course.title}
+</Typography>
 
       <Typography
         sx={{
@@ -363,7 +392,7 @@ const Courses = () => {
 
             <Typography
               sx={{
-                fontSize: "0.7rem",
+                fontSize: {md:"0.7rem",xs:"0.5rem",sm:"0.5rem"},
                 fontWeight: 900,
                 letterSpacing: "0.14em",
                 textTransform: "uppercase",
@@ -373,11 +402,12 @@ const Courses = () => {
               Corporate Upskilling & Industrial Mastery
             </Typography>
           </Box>
-<CouponEnrollment/>
+
+   
           <Typography
             sx={{
               fontWeight: 900,
-              fontSize: { xs: "2.3rem", md: "4.5rem" },
+              fontSize: { xs: "1.5rem", md: "4.5rem" },
               lineHeight: 1.08,
               color: "#102a43",
               fontFamily: "serif",
@@ -436,7 +466,7 @@ const Courses = () => {
               width: "100%",
               display: "block",
               height: {
-                xs: 220,
+                xs: 180,
                 sm: 320,
                 md: 560,
                 lg: 660,
@@ -499,6 +529,7 @@ const Courses = () => {
               sx={{
                 px: 4,
                 py: 1.3,
+              
                 borderRadius: 50,
                 textTransform: "none",
                 fontWeight: 800,
@@ -533,13 +564,13 @@ const Courses = () => {
       },
 
       columnGap: {
-        xs: 2,
+        xs: 5,
         sm: 3,
         md: 4,
       },
 
       rowGap: {
-        xs: 3,
+        xs: 7,
         sm: 4,
         md: 8,
       },
@@ -580,7 +611,39 @@ const Courses = () => {
             Why Choose Our Learning Model
           </Typography>
 
+       
+        </Box>
+            <Box
+          sx={{
+            width: "100%",
+            maxWidth: "1400px",
+            mx: "auto",
+            mb: 8,
+            px: { xs: 2, md: 3 },
+            animation: `${fadeUp} 1s ease forwards`,
+          }}
+        >
           <Box
+            component="img"
+            src={banner2}
+            alt="Course Banner"
+            sx={{
+              width: "98%",
+              display: "block",
+              height: {
+                xs: 220,
+                sm: 320,
+                md: 560,
+                lg: 560,
+              },
+              objectFit: "cover",
+              objectPosition: "center",
+              borderRadius: "28px",
+              boxShadow: "0 24px 70px rgba(16,42,67,0.16)",
+            }}
+          />
+        </Box>
+           <Box
             sx={{
               display: "grid",
               gridTemplateColumns: {
@@ -636,7 +699,61 @@ const Courses = () => {
               </Box>
             ))}
           </Box>
-        </Box>
+{/* Fixed Coupon Card */}
+{/* Fixed Coupon Card */}
+<Box
+  sx={{
+    position: "fixed",
+    bottom: {
+      xs: 10,
+      sm: 16,
+      md: 20,
+    },
+    right: {
+      xs: 8,
+      sm: 14,
+      md: 20,
+    },
+    zIndex: 9999,
+    background: "transparent",
+    cursor: "pointer",
+
+    transform: {
+      xs: "scale(0.55)",
+      sm: "scale(0.7)",
+      md: "scale(0.85)",
+      lg: "scale(1)",
+    },
+
+    transformOrigin: "bottom right",
+
+    animation: "floatCoupon 3s ease-in-out infinite",
+
+    "@keyframes floatCoupon": {
+      "0%,100%": {
+        transform: {
+          xs: "scale(0.55) translateY(0px)",
+          sm: "scale(0.7) translateY(0px)",
+          md: "scale(0.85) translateY(0px)",
+          lg: "scale(1) translateY(0px)",
+        },
+      },
+      "50%": {
+        transform: {
+          xs: "scale(0.55) translateY(-8px)",
+          sm: "scale(0.7) translateY(-8px)",
+          md: "scale(0.85) translateY(-8px)",
+          lg: "scale(1) translateY(-8px)",
+        },
+      },
+    },
+  }}
+  onClick={() => {
+    window.location.href = "/course-fill";
+  }}
+>
+  <CourseCoupon />
+</Box>
       </Box>
     </Box>
   );

@@ -3,6 +3,7 @@ import { Box, Typography, Button, Container } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
+
 import Solutions from "./Solutions";
 import Banner from "./assets/Banner.PNG";
 import better from "./assets/better.png";
@@ -32,6 +33,30 @@ const faqs = [
   },
 ];
 
+const fontFamily = "'Century Gothic', 'Poppins', 'Segoe UI', sans-serif";
+
+const headingStyle = {
+  fontFamily,
+  fontWeight: 900,
+  lineHeight: 1.15,
+  fontSize: {
+    xs: "1.8rem",
+    sm: "2.2rem",
+    md: "2.8rem",
+    lg: "3.4rem",
+  },
+};
+
+const bodyStyle = {
+  fontFamily,
+  fontSize: {
+    xs: "0.92rem",
+    sm: "0.98rem",
+    md: "1.05rem",
+  },
+  lineHeight: 1.8,
+};
+
 const Home = () => {
   const [openFaq, setOpenFaq] = useState(0);
   const [activeSlide, setActiveSlide] = useState(0);
@@ -47,23 +72,36 @@ const Home = () => {
   }, [sliderImages.length]);
 
   return (
-    <Box id="home" sx={{ width: "100%", overflowX: "hidden" }}>
+    <Box
+      id="home"
+      sx={{
+        width: "100%",
+        overflowX: "hidden",
+        fontFamily,
+        bgcolor: "#fff",
+      }}
+    >
       {/* Banner */}
-      <Box
-        sx={{
-          width: "100%",
-          height: { xs: "220px", sm: "320px", md: "430px", lg: "560px" },
-          position: "relative",
-          overflow: "hidden",
-        }}
-      >
+    <Box
+  sx={{
+    width: "100%",
+    height: {
+      xs: "180px",
+      sm: "280px",
+      md: "420px",
+      lg: "650px", 
+    },
+    position: "relative",
+    overflow: "hidden",
+  }}
+>
         <Box
           component="img"
           src={Banner}
           alt="IT Company Banner"
           sx={{
             width: "100%",
-            height: "100%",
+            height: "120%",
             objectFit: "cover",
             display: "block",
           }}
@@ -74,43 +112,37 @@ const Home = () => {
       <Box
         sx={{
           background: "linear-gradient(135deg, #f8fbff 0%, #eef5ff 100%)",
-          py: { xs: 5, md: 8 },
+          py: { xs: 4, sm: 5, md: 7, lg: 9 },
         }}
       >
-        <Container maxWidth="lg">
+        <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
           <Box sx={{ textAlign: "center", maxWidth: 850, mx: "auto" }}>
             <Typography
               sx={{
+                fontFamily,
                 color: "#1565d8",
                 fontWeight: 800,
+                    fontFamily:"-apple-system",
                 letterSpacing: "2px",
                 textTransform: "uppercase",
                 mb: 1.5,
+                fontSize: { xs: "0.75rem", md: "0.9rem" },
               }}
             >
               Who We Are
             </Typography>
 
-            <Typography
-              variant="h3"
-              sx={{
-                  fontFamily:"-moz-initial",
-                fontWeight: 900,
-                color: "#102a43",
-                fontSize: { xs: "1.9rem", md: "3rem" },
-                lineHeight: 1.2,
-                mb: 2,
-              }}
-            >
+            <Typography sx={{ ...headingStyle, color: "#102a43", mb: 2 ,    fontFamily:"-apple-system",}}>
               Building Smart Digital Solutions for Growing Businesses
             </Typography>
 
             <Typography
               sx={{
-                color: "#52606d",
-                fontSize: { xs: "0.96rem", md: "1.08rem" },
-                lineHeight: 1.8,
+                ...bodyStyle,
+                color: "#3b434a",
                 mb: 3,
+                fontWeight:400,
+                   fontFamily:"math",
               }}
             >
               We create professional websites, web applications, mobile
@@ -122,11 +154,13 @@ const Home = () => {
               variant="contained"
               onClick={() => (window.location.href = "/who-we-are")}
               sx={{
-                px: 4,
-                py: 1.3,
+                px: { xs: 2.5, md: 4 },
+                py: { xs: 1, md: 1.3 },
                 borderRadius: "50px",
                 textTransform: "none",
+                fontFamily,
                 fontWeight: 700,
+                fontSize: { xs: "0.85rem", md: "1rem" },
                 background: "linear-gradient(135deg, #1565d8, #003b88)",
                 boxShadow: "0 10px 25px rgba(21,101,216,0.25)",
               }}
@@ -137,188 +171,207 @@ const Home = () => {
         </Container>
       </Box>
 
-      {/* Solutions Section */}
       <Solutions />
 
       {/* Design Experience Section */}
-      <Box sx={{ background: "#eeeeee", py: { xs: 5, md: 8 } }}>
-        <Container maxWidth="xl">
+<Box sx={{ background: "#eeeeee", py: { xs: 4, sm: 5, md: 6, lg: 9 } }}>
+  <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 3, lg: 4 } }}>
+    <Box
+      sx={{
+        display: "grid",
+        gridTemplateColumns: {
+          xs: "1fr",
+          sm: "1fr",
+          md: "0.9fr 1.2fr 0.9fr",
+          lg: "0.8fr 1.4fr 0.8fr",
+        },
+        gap: { xs: 2.5, md: 2, lg: 3 },
+        alignItems: "stretch",
+      }}
+    >
+      {/* Left Slider */}
+      <Box
+        sx={{
+          minHeight: {
+            xs: 250,
+            sm: 320,
+            md: 520,
+            lg: 650,
+          },
+          borderRadius: "18px",
+          overflow: "hidden",
+          position: "relative",
+          boxShadow: "0 25px 60px rgba(0,0,0,0.18)",
+        }}
+      >
+        <Box
+          component="img"
+          src={sliderImages[activeSlide]}
+          alt="Better Design"
+          sx={{
+            width: "120%",
+            height: "100%",
+            minHeight: {
+              xs: 250,
+              sm: 320,
+              md: 520,
+              lg: 650,
+            },
+            objectFit: "cover",
+            objectPosition: "center",
+            display: "block",
+            transition: "all 0.8s ease",
+          }}
+        />
+      </Box>
+
+      {/* Center Content */}
+      <Box
+        sx={{
+          background: "#fff",
+          borderRadius: "12px",
+          p: { xs: 2.5, sm: 3, md: 3, lg: 7 },
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
+      >
+        <Typography
+          sx={{
+            ...headingStyle,
+            color: "#07111f",
+             fontFamily:"-apple-system",
+            mb: 2,
+            fontSize: {
+              xs: "1.8rem",
+              sm: "2.2rem",
+              md: "2.1rem",
+              lg: "2.4rem",
+            },
+          }}
+        >
+          Better Designs, Better Experiences
+        </Typography>
+
+        <Typography
+          sx={{
+            ...bodyStyle,
+            color: "#333",
+            fontWeight:750,
+            fontFamily:"math",
+            fontSize: {
+              xs: "0.92rem",
+              md: "0.9rem",
+              lg: "1.05rem",
+            },
+          }}
+        >
+          We believe great design is more than just appearance. It is about
+          creating meaningful digital experiences that connect users with
+          technology. Our approach blends creativity, usability, innovation, and
+          business strategy to build websites, applications, and software
+          products that are clean, modern, and easy to use.
+        </Typography>
+
+        <Typography
+          sx={{
+            ...bodyStyle,
+            color: "#333",
+               fontWeight:750,
+            fontFamily:"math",
+            mt: 2,
+            fontSize: {
+              xs: "0.92rem",
+              md: "0.9rem",
+              lg: "1.05rem",
+            },
+          }}
+        >
+          From wireframes to final interfaces, we focus on clarity,
+          accessibility, responsive design, and smooth user interaction. Every
+          screen is designed to support your business goals and improve customer
+          engagement.
+        </Typography>
+      </Box>
+
+      {/* Right Section */}
+      <Box sx={{ display: "grid", gap: { xs: 2, md: 1.5, lg: 2 } }}>
+        <Box
+          component="img"
+          src={Archi}
+          alt="Professional Team"
+          sx={{
+            width: "100%",
+            height: {
+              xs: 280,
+              sm: 350,
+              md: 220,
+              lg: 400,
+            },
+            objectFit: "cover",
+            borderRadius: "18px",
+            boxShadow: "0 30px 80px rgba(16,42,67,0.22)",
+            display: "block",
+          }}
+        />
+
+        <Box
+          sx={{
+            borderRadius: "18px",
+            background: "linear-gradient(135deg, #091c37, #003b88)",
+            boxShadow: "0 10px 25px rgba(21,101,216,0.25)",
+            p: { xs: 3, md: 2.5, lg: 4 },
+            minHeight: { xs: 190, md: 185, lg: 260 },
+            color: "#fff",
+          }}
+        >
+          <Typography
+            sx={{
+              fontFamily,
+              fontSize: {
+                xs: "1.5rem",
+                sm: "1.8rem",
+                md: "1.5rem",
+                lg: "2rem",
+              },
+              fontWeight: 900,
+            }}
+          >
+            Let’s Talk Design!
+          </Typography>
+
+          <Button
+            onClick={() => (window.location.href = "/conversation")}
+            sx={{
+              mt: { xs: 3, md: 2 },
+              minWidth: { xs: 56, md: 48 },
+              height: { xs: 56, md: 48 },
+              borderRadius: "50%",
+              background: "#c8ffd2",
+              color: "#111",
+              "&:hover": { background: "#a8f5b5" },
+            }}
+          >
+            <ArrowOutwardIcon />
+          </Button>
+        </Box>
+      </Box>
+    </Box>
+  </Container>
+</Box>
+
+      {/* FAQ Section */}
+      <Box sx={{ background: "#edf4ff", py: { xs: 4, sm: 5, md: 7, lg: 9 } }}>
+        <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
           <Box
             sx={{
               display: "grid",
               gridTemplateColumns: {
                 xs: "1fr",
-                md: "0.8fr 1.4fr 0.8fr",
+                md: "1fr",
+                lg: "1.1fr 0.9fr",
               },
-              gap: 3,
-              alignItems: "stretch",
-            }}
-          >
-            {/* LEFT AUTO SLIDER IMAGE */}
-            <Box
-              sx={{
-                minHeight: { xs: 420, md: 650 },
-                borderRadius: "18px",
-                overflow: "hidden",
-                position: "relative",
-                boxShadow: "0 25px 60px rgba(0,0,0,0.18)",
-              }}
-            >
-              <Box
-                component="img"
-                src={sliderImages[activeSlide]}
-                alt="Better Design"
-                sx={{
-                  width: "100%",
-                  height: "100%",
-                  minHeight: { xs: 420, md: 650 },
-                  objectFit: "cover",
-                  objectPosition: "center",
-                  display: "block",
-                  transition: "all 0.8s ease",
-                }}
-              />
-
-              <Box
-                sx={{
-                  position: "absolute",
-                  inset: 0,
-                  background:
-                    "linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.32))",
-                }}
-              />
-
-              <Box
-                sx={{
-                  position: "absolute",
-                  bottom: 22,
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  display: "flex",
-                  gap: 1,
-                  zIndex: 2,
-                }}
-              >
-                {sliderImages.map((_, index) => (
-                  <Box
-                    key={index}
-                    onClick={() => setActiveSlide(index)}
-                    sx={{
-                      width: activeSlide === index ? 28 : 10,
-                      height: 10,
-                      borderRadius: "20px",
-                      cursor: "pointer",
-                      background:
-                        activeSlide === index
-                          ? "#ffffff"
-                          : "rgba(255,255,255,0.5)",
-                      transition: "0.3s",
-                    }}
-                  />
-                ))}
-              </Box>
-            </Box>
-
-            {/* CENTER CONTENT */}
-            <Box
-              sx={{
-                background: "#fff",
-                borderRadius: "8px",
-                p: { xs: 4, md: 8 },
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-              }}
-            >
-              <Typography
-                variant="h3"
-                sx={{
-                  fontWeight: 900,
-                    fontFamily:"-moz-initial",
-                  color: "#07111f",
-                  fontSize: { xs: "2rem", md: "3rem" },
-                  lineHeight: 1.1,
-                  mb: 3,
-                }}
-              >
-                Better Designs, Better Experiences
-              </Typography>
-
-              <Typography sx={{ color: "#333", lineHeight: 1.9 }}>
-                We believe great design is more than just appearance. It is
-                about creating meaningful digital experiences that connect users
-                with technology. Our approach blends creativity, usability,
-                innovation, and business strategy to build websites,
-                applications, and software products that are clean, modern, and
-                easy to use.
-              </Typography>
-
-              <Typography sx={{ color: "#333", lineHeight: 1.9, mt: 2 }}>
-                From wireframes to final interfaces, we focus on clarity,
-                accessibility, responsive design, and smooth user interaction.
-                Every screen is designed to support your business goals and
-                improve customer engagement.
-              </Typography>
-            </Box>
-
-            {/* RIGHT CARDS */}
-            <Box sx={{ display: "grid", gap: 2 }}>
-         <Box
-  component="img"
-  src={Archi}
-  alt="Professional Team"
-  sx={{
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
-    borderRadius: "5%",
-    boxShadow: "0 30px 80px rgba(16,42,67,0.22)",
-    display: "block",
-  }}
-/>
-
-              <Box
-                sx={{
-                  borderRadius: "14px",
-                     background: "linear-gradient(135deg, #091c37, #003b88)",
-                boxShadow: "0 10px 25px rgba(21,101,216,0.25)",
-                  p: 4,
-                  minHeight: 260,
-                  color: "#fff",
-                }}
-              >
-                <Typography variant="h4" fontWeight={900}>
-                  Let’s Talk Design!
-                </Typography>
-
-                <Button
-               onClick={() => (window.location.href = "/conversation")}
-                  sx={{
-                    mt: 3,
-                    minWidth: 58,
-                    height: 58,
-                    borderRadius: "50%",
-                    background: "#c8ffd2",
-                    color: "#111",
-                    "&:hover": { background: "#a8f5b5" },
-                  }}
-                >
-                  <ArrowOutwardIcon />
-                </Button>
-              </Box>
-            </Box>
-          </Box>
-        </Container>
-      </Box>
-
-      {/* FAQ Section */}
-      <Box sx={{ background: "#edf4ff", py: { xs: 5, md: 8 } }}>
-        <Container maxWidth="lg">
-          <Box
-            sx={{
-              display: "grid",
-              gridTemplateColumns: { xs: "1fr", md: "1.1fr 0.9fr" },
-              gap: { xs: 4, md: 8 },
+              gap: { xs: 4, md: 6, lg: 8 },
               alignItems: "start",
             }}
           >
@@ -349,13 +402,16 @@ const Home = () => {
                       display: "flex",
                       justifyContent: "space-between",
                       alignItems: "center",
+                      gap: 2,
                       cursor: "pointer",
                     }}
                   >
                     <Typography
                       sx={{
+                        fontFamily:"math",
                         fontWeight: 800,
                         color: openFaq === index ? "#1565d8" : "#111827",
+                        fontSize: { xs: "0.95rem", md: "1.2rem" },
                       }}
                     >
                       {item.q}
@@ -371,10 +427,11 @@ const Home = () => {
                   {openFaq === index && (
                     <Typography
                       sx={{
+                        ...bodyStyle,
                         mt: 2,
-                        color: "#52606d",
-                        lineHeight: 1.8,
-                        fontSize: "0.95rem",
+                        
+                        color: "#3e444a",
+                        fontSize: { xs: "0.88rem", md: "0.95rem" },
                       }}
                     >
                       {item.a}
@@ -384,27 +441,26 @@ const Home = () => {
               ))}
             </Box>
 
-            <Box sx={{ pt: { xs: 0, md: 2 } }}>
+            <Box sx={{ pt: { xs: 0, lg: 2 } }}>
               <Typography
-                variant="h2"
                 sx={{
-                  fontWeight: 900,
-                    fontFamily:"-moz-initial",
+                  ...headingStyle,
                   color: "#111",
-                  fontSize: { xs: "2.2rem", md: "3.4rem" },
-                  lineHeight: 0.95,
+                  lineHeight: 1,
                   mb: 2,
+                    fontFamily:"math",
                 }}
               >
-                Frequently asked Questions
+                Frequently Asked Questions
               </Typography>
 
               <Typography
                 sx={{
+                  ...bodyStyle,
                   color: "#374151",
                   maxWidth: 420,
-                  lineHeight: 1.6,
                   mb: 3,
+                    fontFamily:"math",
                 }}
               >
                 Find quick answers to the most common questions about our
@@ -413,14 +469,17 @@ const Home = () => {
 
               <Button
                 variant="contained"
+                onClick={() => (window.location.href = "/conversation")}
                 sx={{
                   background: "#111",
                   color: "#fff",
-                  borderRadius: "6px",
-                  px: 3,
-                  py: 1.3,
+                  borderRadius: "8px",
+                  px: { xs: 2.5, md: 3 },
+                  py: { xs: 1, md: 1.3 },
                   textTransform: "none",
+                  fontFamily,
                   fontWeight: 800,
+                  fontSize: { xs: "0.85rem", md: "1rem" },
                   "&:hover": { background: "#003b88" },
                 }}
               >

@@ -48,9 +48,11 @@ export default function LearnMoreSection() {
     <Box sx={{ textAlign: "center", py: 5, px: 2 }}>
       <Typography
         variant="h3"
-        fontWeight={1000}
+
         sx={{
           mb: 3,
+          fontWeight:"600",
+          fontFamily:"-apple-system",
           background: "linear-gradient(135deg, #1565d8, #003b88)",
           boxShadow: " rgba(21,101,216,0.25)",
           WebkitBackgroundClip: "text",
@@ -114,6 +116,8 @@ export default function LearnMoreSection() {
               WebkitTextFillColor: "transparent",
                 textAlign: "center",
               maxWidth: 900,
+                        fontWeight:"600",
+          fontFamily:"-apple-system",
               mx: "auto",
             }}
           >
@@ -174,7 +178,8 @@ export default function LearnMoreSection() {
                   variant="h6"
                   fontWeight={800}
                   mb={1}
-                  sx={{ color: "#003b88" }}
+                  sx={{ color: "#003b88" ,                        fontWeight:"600",
+          fontFamily:"-apple-system",}}
                 >
                   {item.title}
                 </Typography>
@@ -196,7 +201,8 @@ export default function LearnMoreSection() {
             variant="h5"
             fontWeight={900}
             mb={2}
-            sx={{ color: "#003b88" }}
+            sx={{ color: "#003b88",                        fontWeight:"600",
+          fontFamily:"-apple-system", }}
           >
             Why Choose Us?
           </Typography>

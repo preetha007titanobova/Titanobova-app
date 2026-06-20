@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import Services from "./Services";
-
+import { keyframes } from "@mui/system";
+import projectbanner from "../src/assets/project.png";
+import { Box} from "@mui/material";
 const BLUE = "#1565d8";
 const DARK_BLUE = "#003b88";
 const TEXT_DARK = "#102a43";
@@ -203,7 +205,16 @@ const highlights = [
     desc: "Threat detection, data protection, technical consulting, and product architecture planning.",
   },
 ];
-
+const fadeUp = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
 const SLOTS = {
   left2: { x: -420, scale: 0.62, z: -200, opacity: 0.35, height: 410 },
   left1: { x: -235, scale: 0.78, z: -100, opacity: 0.7, height: 480 },
@@ -395,7 +406,7 @@ function ProjectCard({ project, height }) {
           </span>
         ))}
       </div>
-
+      
       <div
         style={{
           display: "flex",
@@ -550,9 +561,11 @@ const Project = () => {
             key={index}
             style={{
               background: "#ffffff",
+          
               border: "1px solid rgba(21,101,216,0.13)",
               borderRadius: 20,
               padding: 22,
+             
               boxShadow: "0 14px 35px rgba(16,42,67,0.08)",
             }}
           >
@@ -746,28 +759,38 @@ const Project = () => {
           zIndex: 2,
         }}
       >
-        {projects.map((_, i) => (
-          <div
-            key={i}
-            onClick={() => {
-              resetAuto();
-              goTo(i);
-            }}
-            style={{
-              height: 8,
-              width: i === current ? 28 : 8,
-              borderRadius: 99,
-              background:
-                i === current
-                  ? `linear-gradient(135deg, ${BLUE}, ${DARK_BLUE})`
-                  : "#dbeafe",
-              cursor: "pointer",
-              transition: "all 0.3s ease",
+     
+      </div>
+ <Box
+          sx={{
+            width: "100%",
+            maxWidth: "1200px",
+            mx: "auto",
+            mb: 5,
+            px: { xs: 2, md: 3 },
+            animation: `${fadeUp} 1s ease forwards`,
+          }}
+        >
+          <Box
+            component="img"
+            src={projectbanner}
+            alt="Course Banner"
+            sx={{
+              width: "100%",
+              display: "block",
+              height: {
+                xs: 220,
+                sm: 320,
+                md: 560,
+                lg: 760,
+              },
+              objectFit: "cover",
+              objectPosition: "center",
+              borderRadius: "28px",
+              boxShadow: "0 24px 70px rgba(16,42,67,0.16)",
             }}
           />
-        ))}
-      </div>
-
+          </Box>
       <Services />
     </div>
   );

@@ -579,6 +579,7 @@ const Solutions = () => {
                 sm: 2,
                 md: 3,
               },
+              
             }}
           >
             {renderRow(row1, getRow1Anim, 3)}
