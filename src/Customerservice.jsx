@@ -14,7 +14,8 @@ import {
   MenuItem,
 } from "@mui/material";
 import axios from "axios";
-
+import Api from "./Api.js";
+import { toast } from "react-toastify";
 const CustomerSupportForm = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -53,37 +54,48 @@ const CustomerSupportForm = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+ const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    if (!formData.name || !formData.email || !formData.phone) {
-      alert("Please fill all required fields");
-      return;
-    }
+  if (!formData.name || !formData.email || !formData.phone) {
+    toast.warning("Please fill all required fields");
+    return;
+  }
 
-    try {
-      setLoading(true);
+  try {
 
-      await axios.post("http://localhost:7000/api/v1/customersupport/create", formData);
-console.log("formData",formData)
-      alert("Your request has been submitted successfully!");
+    const response = await Api.post(
+      "/customersupport/create",
+      formData
+    );
 
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        supportType: "Course Support",
-        courseName: "",
-        projectType: "",
-        message: "",
-      });
-    } catch (error) {
-      alert("Something went wrong. Please try again.");
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  };
+    console.log("formData", formData);
+
+    toast.success(
+      response.data.message ||
+        "Your request has been submitted successfully!"
+    );
+
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      supportType: "Course Support",
+      courseName: "",
+      projectType: "",
+      message: "",
+    });
+  } catch (error) {
+    console.log(error);
+
+    toast.error(
+      error.response?.data?.message ||
+        "Something went wrong. Please try again."
+    );
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <Box

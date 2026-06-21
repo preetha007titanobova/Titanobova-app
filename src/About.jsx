@@ -809,15 +809,7 @@ export default function App() {
               secure backend systems, automation workflows, and cloud-ready digital solutions.
             </Typography>
 
-            <Box sx={{ display: "flex", justifyContent: "center", gap: 2, flexWrap: "wrap", mt: 4 }}>
-              <Button href="mailto:contact@titanobova.com" sx={{ bgcolor: "#fff", color: "#0b74de", borderRadius: "999px", px: 3, py: 1.5, fontWeight: 700 }}>
-                contact@titanobova.com
-              </Button>
-
-              <Button href="https://www.titanobova.com" target="_blank" sx={{ bgcolor: "rgba(255,255,255,0.14)", color: "#fff", border: "1px solid rgba(255,255,255,0.28)", borderRadius: "999px", px: 3, py: 1.5, fontWeight: 700 }}>
-                www.titanobova.com
-              </Button>
-            </Box>
+          
           </Box>
         </Reveal>
       </Box>

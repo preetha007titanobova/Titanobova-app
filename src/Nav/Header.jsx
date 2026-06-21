@@ -11,22 +11,26 @@ import {
   List,
   ListItem,
   ListItemText,
+  Menu,
+  MenuItem,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import logo from "../assets/logo.png"
+import logo from "../assets/logo.png";
+
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const [aboutAnchor, setAboutAnchor] = useState(null);
+  const [courseAnchor, setCourseAnchor] = useState(null);
 
-  const menuItems = [
-    {
-      text: "Home",
-      link: "/home",
-      submenu: [{ text: "Who We Are", link: "/who-we-are" }],
-    },
-    { text: "About", link: "/about" },
-    { text: "Projects", link: "/project" },
+  const aboutSubMenu = [
+    { text: "Who We Are", link: "/who-we-are" },
+    { text: "Technology", link: "/technology" },
+    { text: "Vision", link: "/about" },
+  ];
+
+  const courseSubMenu = [
     { text: "Courses", link: "/courses" },
-    { text: "Contact Us", link: "/customersupport" },
+    { text: "Interns", link: "/interapply" },
   ];
 
   return (
@@ -50,40 +54,39 @@ const Header = () => {
           }}
         >
           <Box
-  sx={{
-    display: "flex",
-    alignItems: "center",
-    gap: 0.5, // Reduce space (0 = no gap)
-  }}
->
-         <Box
-  component="img"
-  src={logo}
-  alt="Titanobova Logo"
-  sx={{
-    width: { xs: 60, md: 100 },
-    height: "auto",
-    fontWeight:500,   
-     objectFit: "contain",
-  }}
-/>
-          {/* Logo */}
-          <Typography
-            variant="h6"
             onClick={() => (window.location.href = "/home")}
             sx={{
-              color: "#163372",
-              fontWeight: 800,
-          
-              fontSize: { xs: "1.4rem", md: "1.8rem" },
-              fontFamily: "'Poppins', sans-serif",
-              letterSpacing: "1px",
+              display: "flex",
+              alignItems: "center",
+              gap: 0.5,
               cursor: "pointer",
             }}
           >
-            Titanobova
-          </Typography>
-</Box>
+            <Box
+              component="img"
+              src={logo}
+              alt="Titanobova Logo"
+              sx={{
+                width: { xs: 60, md: 100 },
+                height: "auto",
+                objectFit: "contain",
+              }}
+            />
+
+            <Typography
+              variant="h6"
+              sx={{
+                color: "#163372",
+                fontWeight: 800,
+                fontSize: { xs: "1.4rem", md: "1.8rem" },
+                fontFamily: "'Poppins', sans-serif",
+                letterSpacing: "1px",
+              }}
+            >
+              Titanobova
+            </Typography>
+          </Box>
+
           {/* Desktop Menu */}
           <Box
             sx={{
@@ -92,42 +95,67 @@ const Header = () => {
               alignItems: "center",
             }}
           >
-            {menuItems.map((item, index) => (
-              <Link
-                key={index}
-                href={item.link}
-                underline="none"
-                sx={{
-                  color: "#222",
-                  fontSize: "15px",
-                  fontWeight: 600,
-                  fontFamily: "'Poppins', sans-serif",
-                  position: "relative",
-                  transition: "all 0.3s ease",
+            <Link href="/home" underline="none" sx={navStyle}>
+              Home
+            </Link>
 
-                  "&::after": {
-                    content: '""',
-                    position: "absolute",
-                    width: 0,
-                    height: "2px",
-                    bottom: -6,
-                    left: 0,
-                    backgroundColor: "#1976d2",
-                    transition: "width 0.3s ease",
-                  },
+            <Typography
+              onMouseEnter={(e) => setAboutAnchor(e.currentTarget)}
+              sx={navStyle}
+            >
+              About
+            </Typography>
 
-                  "&:hover": {
-                    color: "#1976d2",
-                  },
+            <Menu
+              anchorEl={aboutAnchor}
+              open={Boolean(aboutAnchor)}
+              onClose={() => setAboutAnchor(null)}
+              MenuListProps={{
+                onMouseLeave: () => setAboutAnchor(null),
+              }}
+            >
+              {aboutSubMenu.map((item, index) => (
+                <MenuItem
+                  key={index}
+                  onClick={() => (window.location.href = item.link)}
+                >
+                  {item.text}
+                </MenuItem>
+              ))}
+            </Menu>
 
-                  "&:hover::after": {
-                    width: "100%",
-                  },
-                }}
-              >
-                {item.text}
-              </Link>
-            ))}
+            <Link href="/project" underline="none" sx={navStyle}>
+              Projects
+            </Link>
+
+            <Typography
+              onMouseEnter={(e) => setCourseAnchor(e.currentTarget)}
+              sx={navStyle}
+            >
+              Courses
+            </Typography>
+
+            <Menu
+              anchorEl={courseAnchor}
+              open={Boolean(courseAnchor)}
+              onClose={() => setCourseAnchor(null)}
+              MenuListProps={{
+                onMouseLeave: () => setCourseAnchor(null),
+              }}
+            >
+              {courseSubMenu.map((item, index) => (
+                <MenuItem
+                  key={index}
+                  onClick={() => (window.location.href = item.link)}
+                >
+                  {item.text}
+                </MenuItem>
+              ))}
+            </Menu>
+
+            <Link href="/customersupport" underline="none" sx={navStyle}>
+              Contact Us
+            </Link>
 
             <Button
               variant="contained"
@@ -141,8 +169,6 @@ const Header = () => {
                 fontFamily: "'Poppins', sans-serif",
                 textTransform: "none",
                 boxShadow: "0 8px 20px rgba(25,118,210,0.25)",
-                transition: "all 0.3s ease",
-
                 "&:hover": {
                   transform: "translateY(-2px)",
                   boxShadow: "0 12px 25px rgba(25,118,210,0.35)",
@@ -153,7 +179,6 @@ const Header = () => {
             </Button>
           </Box>
 
-          {/* Mobile Hamburger */}
           <IconButton
             sx={{
               display: { xs: "block", md: "none" },
@@ -168,55 +193,58 @@ const Header = () => {
 
       {/* Mobile Drawer */}
       <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
-        <Box
-          sx={{
-            width: 230,
-            p: 2,
-          }}
-        >
+        <Box sx={{ width: 260, p: 2 }}>
           <Typography
             sx={{
               fontSize: "1.4rem",
               fontWeight: 800,
               fontFamily: "'Poppins', sans-serif",
               mb: 2,
+              color: "#163372",
             }}
           >
             Titanobova
           </Typography>
 
           <List>
-            {menuItems.map((item, index) => (
-              <ListItem
-                button
-                key={index}
-                component="a"
-                href={item.link}
-                onClick={() => setOpen(false)}
-                sx={{
-                  borderRadius: "10px",
-                  mb: 1,
+            <MobileItem text="Home" link="/home" setOpen={setOpen} />
 
-                  "&:hover": {
-                    bgcolor: "#eef5ff",
-                  },
-                }}
-              >
-                <ListItemText
-                  primary={item.text}
-                  primaryTypographyProps={{
-                    fontSize: "15px",
-                    fontWeight: 600,
-                    fontFamily: "'Poppins', sans-serif",
-                    color: "#222",
-                  }}
-                />
-              </ListItem>
-            ))}
+            <Typography sx={mobileTitle}>About</Typography>
+        {aboutSubMenu.map((item, index) => (
+  <MobileItem
+    key={index}
+    text={item.text}
+    link={item.link}
+    setOpen={setOpen}
+    subItem
+  />
+))}
+
+            <MobileItem text="Projects" link="/project" setOpen={setOpen} />
+
+            <Typography sx={mobileTitle}>Courses</Typography>
+        {courseSubMenu.map((item, index) => (
+  <MobileItem
+    key={index}
+    text={item.text}
+    link={item.link}
+    setOpen={setOpen}
+    subItem
+  />
+))}
+
+            <MobileItem
+              text="Contact Us"
+              link="/customersupport"
+              setOpen={setOpen}
+            />
 
             <Button
               variant="contained"
-              onClick={() => (window.location.href = "/conversation")}
+              onClick={() => {
+                setOpen(false);
+                window.location.href = "/conversation";
+              }}
               fullWidth
               sx={{
                 mt: 2,
@@ -235,6 +263,72 @@ const Header = () => {
       </Drawer>
     </>
   );
+};
+
+const MobileItem = ({ text, link, setOpen, subItem = false }) => (
+  <ListItem
+    component="a"
+    href={link}
+    onClick={() => setOpen(false)}
+    sx={{
+      borderRadius: "10px",
+    
+      mb: 1,
+      pl: subItem ? 3.5 : 2,
+      cursor: "pointer",
+      position: "relative",
+      "&:hover": {
+        bgcolor: "#a5b4eb",
+      },
+      "&::before": subItem
+        ? {
+            content: '""',
+            position: "absolute",
+            left: 14,
+            top: "50%",
+            transform: "translateY(-50%)",
+            width: 6,
+            height: 6,
+            borderRadius: "50%",
+            bgcolor: "#1976d2",
+          }
+        : {},
+    }}
+  >
+    <ListItemText
+      primary={text}
+      primaryTypographyProps={{
+        fontSize: "15px",
+        fontWeight: subItem ? 500 : 600,
+        fontFamily: "'Poppins', sans-serif",
+        color: "#222",
+      }}
+    />
+  </ListItem>
+);
+
+const navStyle = {
+  color: "#222",
+  fontSize: "15px",
+  fontWeight: 600,
+  fontFamily: "'Poppins', sans-serif",
+  cursor: "pointer",
+  position: "relative",
+  transition: "all 0.3s ease",
+  textDecoration: "none",
+  "&:hover": {
+    color: "#1976d2",
+  },
+};
+
+const mobileTitle = {
+  mt: 1.5,
+  mb: 1,
+  fontSize: "13px",
+  fontWeight: 800,
+  color: "#163372",
+  textTransform: "uppercase",
+  letterSpacing: "1px",
 };
 
 export default Header;

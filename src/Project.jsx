@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import Services from "./Services";
 import { keyframes } from "@mui/system";
 import projectbanner from "../src/assets/project.png";
-import { Box} from "@mui/material";
+import { Box, Typography} from "@mui/material";
+import ServiceEnquiry from "./ServiceEnquiry";
 const BLUE = "#1565d8";
 const DARK_BLUE = "#003b88";
 const TEXT_DARK = "#102a43";
@@ -12,175 +13,245 @@ const LIGHT_BLUE = "#eaf3ff";
 const projects = [
   {
     id: 1,
-    title: "AI Smart Helpdesk",
-    category: "Artificial Intelligence",
+    title: "AI Medical Receptionist",
+    category: "Healthcare Automation",
     accent: BLUE,
     accentBg: LIGHT_BLUE,
     accentText: DARK_BLUE,
-    tags: ["Python", "AI", "React", "FastAPI"],
+    tags: ["n8n", "AI", "Webhook", "Automation"],
     description:
-      "AI-powered IT support system that handles tickets, assists users, and improves service response with intelligent automation.",
+      "A 24/7 AI-powered healthcare receptionist for appointment booking, patient triage, pharmacy queries, inventory checks, and staff handover automation.",
     demos: [
       {
-        icon: "🎫",
-        label: "Ticket Dashboard",
+        icon: "🏥",
+        label: "Patient Intake",
         bg: "#0d1b2a",
         accent: "#64b5f6",
-        desc: "Auto-categorizes and prioritizes incoming IT tickets.",
+        desc: "Captures patient requests from WhatsApp, web chat, or SMS instantly.",
       },
       {
-        icon: "🤖",
-        label: "AI Chat",
+        icon: "🧠",
+        label: "AI Triage",
         bg: "#0b1736",
         accent: "#90caf9",
-        desc: "Smart assistant for faster support and query handling.",
+        desc: "Classifies symptoms, appointment needs, and pharmacy questions.",
       },
       {
-        icon: "📊",
-        label: "Analytics",
+        icon: "⚡",
+        label: "Fast Response",
         bg: "#082032",
         accent: "#4fc3f7",
-        desc: "Tracks resolution time, agent load, and service quality.",
+        desc: "Cuts queue time with instant booking replies and smart escalation.",
       },
     ],
     liveUrl: "#",
   },
   {
     id: 2,
-    title: "Pocket Productivity Pods",
-    category: "Productivity Platform",
+    title: "AI Boutique Automation",
+    category: "Retail Automation",
     accent: BLUE,
     accentBg: LIGHT_BLUE,
     accentText: DARK_BLUE,
-    tags: ["PWA", "AI Templates", "UPI", "PDF"],
+    tags: ["n8n", "WhatsApp", "CRM", "AI Vision"],
     description:
-      "A mobile-first productivity platform that delivers small outcome-based digital services for daily business and user needs.",
+      "An omnichannel AI assistant for boutiques that handles Instagram, Facebook, and WhatsApp enquiries, catalog sharing, fitting bookings, and CRM updates.",
     demos: [
       {
-        icon: "📱",
-        label: "Mobile First",
+        icon: "💬",
+        label: "Omnichannel Chat",
         bg: "#0d1b2a",
         accent: "#64b5f6",
-        desc: "Fast, lightweight, and simple digital help through a PWA.",
+        desc: "Receives customer messages from social channels in one workflow.",
       },
       {
-        icon: "⚙️",
-        label: "Pod Engine",
+        icon: "👗",
+        label: "Style Matching",
         bg: "#0b1736",
         accent: "#90caf9",
-        desc: "AI templates generate instant useful outputs.",
+        desc: "Reads customer outfit images and matches them with catalog data.",
       },
       {
-        icon: "📄",
-        label: "Instant Output",
+        icon: "📅",
+        label: "Smart Booking",
         bg: "#082032",
         accent: "#4fc3f7",
-        desc: "Results can be shared as PDF or WhatsApp-ready content.",
+        desc: "Automates trial room, tailoring, and measurement appointments.",
       },
     ],
     liveUrl: "#",
   },
   {
     id: 3,
-    title: "AI Prototype & Demo Systems",
-    category: "Consulting",
+    title: "PocketHelp Utility Suite",
+    category: "Micro SaaS Product",
     accent: BLUE,
     accentBg: LIGHT_BLUE,
     accentText: DARK_BLUE,
-    tags: ["AI Demo", "Frontend", "Strategy", "SEO"],
+    tags: ["React", "PDF", "API", "Caching"],
     description:
-      "Interactive AI-integrated demo platforms that help startups and enterprises showcase their product ideas professionally.",
+      "A multi-utility software suite with resume builder, bill generator, e-newspaper, and e-dictionary tools inside one fast digital workspace.",
     demos: [
       {
-        icon: "🧠",
-        label: "AI Demo",
+        icon: "📄",
+        label: "Resume Builder",
         bg: "#0d1b2a",
         accent: "#64b5f6",
-        desc: "Functional AI-based frontend prototypes for business demos.",
+        desc: "Generates ATS-friendly resumes from structured form inputs.",
       },
       {
-        icon: "🚀",
-        label: "Product Strategy",
+        icon: "🧾",
+        label: "Bill Generator",
         bg: "#0b1736",
         accent: "#90caf9",
-        desc: "Feature planning, architecture roadmap, and launch direction.",
+        desc: "Creates instant commercial bills with tax and PDF support.",
       },
       {
-        icon: "🔎",
-        label: "SEO Structure",
+        icon: "📚",
+        label: "Dictionary & News",
         bg: "#082032",
         accent: "#4fc3f7",
-        desc: "Technical SEO and product marketing architecture.",
+        desc: "Uses API lookups and local caching for fast user experience.",
       },
     ],
     liveUrl: "#",
   },
   {
     id: 4,
-    title: "CloudOps Monitor",
-    category: "Cloud Infrastructure",
+    title: "SmartBill AI",
+    category: "Billing & Inventory SaaS",
     accent: BLUE,
     accentBg: LIGHT_BLUE,
     accentText: DARK_BLUE,
-    tags: ["AWS", "Kubernetes", "Node.js", "Grafana"],
+    tags: ["MERN", "MongoDB", "JWT", "PDFKit"],
     description:
-      "Cloud monitoring platform designed for infrastructure visibility, anomaly alerts, and multi-cloud cost optimization.",
+      "An AI-powered billing, inventory, GST, customer, and business management platform for retail shops, medical shops, dry fruit businesses, and SMEs.",
     demos: [
       {
-        icon: "☁️",
-        label: "Cloud Map",
+        icon: "📊",
+        label: "Business Dashboard",
         bg: "#0d1b2a",
         accent: "#64b5f6",
-        desc: "Visual topology across cloud infrastructure.",
+        desc: "Tracks revenue, sales, customers, low stock, and analytics charts.",
       },
       {
-        icon: "⚠️",
-        label: "Smart Alerts",
+        icon: "🧾",
+        label: "Billing System",
         bg: "#0b1736",
         accent: "#90caf9",
-        desc: "Detects spikes and unusual activity in real time.",
+        desc: "Generates GST invoices, discounts, PDFs, and customer records.",
       },
       {
-        icon: "💰",
-        label: "Cost Control",
+        icon: "🤖",
+        label: "AI Assistant",
         bg: "#082032",
         accent: "#4fc3f7",
-        desc: "Identifies unused resources and improves cloud spending.",
+        desc: "Supports sales prediction, inventory suggestions, and invoice scanning.",
       },
     ],
     liveUrl: "#",
   },
   {
     id: 5,
-    title: "SecureNet Scanner",
-    category: "Cybersecurity",
+    title: "RDV & Associates",
+    category: "Finance & Tax Website",
     accent: BLUE,
     accentBg: LIGHT_BLUE,
     accentText: DARK_BLUE,
-    tags: ["Python", "Docker", "PostgreSQL", "React"],
+    tags: ["React", "Tailwind", "Node.js", "PostgreSQL"],
     description:
-      "Security scanning system that monitors vulnerabilities, detects threats, and supports compliance-ready reporting.",
+      "A high-trust corporate auditing and tax consultancy platform that simplifies compliance, GST governance, document checklists, and client onboarding.",
     demos: [
       {
-        icon: "🛡️",
-        label: "Threat Radar",
+        icon: "📅",
+        label: "Tax Calendar",
         bg: "#0d1b2a",
         accent: "#64b5f6",
-        desc: "Real-time scan with severity-based visibility.",
+        desc: "Displays active statutory dates and compliance reminders.",
       },
       {
-        icon: "🔍",
-        label: "Vulnerability Report",
+        icon: "📁",
+        label: "Secure Vault",
         bg: "#0b1736",
         accent: "#90caf9",
-        desc: "Shows risk levels and remediation actions.",
+        desc: "Shows file readiness and document checklist tracking.",
       },
       {
-        icon: "✅",
-        label: "Compliance",
+        icon: "🏢",
+        label: "Audit Tracks",
         bg: "#082032",
         accent: "#4fc3f7",
-        desc: "Supports structured security and audit workflows.",
+        desc: "Routes clients into audit, tax, compliance, and CFO service paths.",
+      },
+    ],
+    liveUrl: "#",
+  },
+  {
+    id: 6,
+    title: "Advocate Loga Murugan",
+    category: "Legal Practice Website",
+    accent: BLUE,
+    accentBg: LIGHT_BLUE,
+    accentText: DARK_BLUE,
+    tags: ["Next.js", "Shadcn UI", "TypeScript", "Supabase"],
+    description:
+      "An authority-focused legal identity platform with case intake, emergency call actions, and practice area landing sections for rapid client trust.",
+    demos: [
+      {
+        icon: "⚖️",
+        label: "Case Intake",
+        bg: "#0d1b2a",
+        accent: "#64b5f6",
+        desc: "Categorizes legal enquiries into criminal, land, and corporate cases.",
+      },
+      {
+        icon: "📞",
+        label: "Emergency Action",
+        bg: "#0b1736",
+        accent: "#90caf9",
+        desc: "Creates fast contact flow for urgent legal support needs.",
+      },
+      {
+        icon: "📚",
+        label: "Practice Matrix",
+        bg: "#082032",
+        accent: "#4fc3f7",
+        desc: "Presents each practice area with clear client validation.",
+      },
+    ],
+    liveUrl: "#",
+  },
+  {
+    id: 7,
+    title: "VVP & VRR Law Associates",
+    category: "Enterprise Legal Platform",
+    accent: BLUE,
+    accentBg: LIGHT_BLUE,
+    accentText: DARK_BLUE,
+    tags: ["Astro", "GraphQL", "CMS", "Vercel Edge"],
+    description:
+      "Institutional legal firm platforms designed for multi-partner directories, jurisdiction search, legal resource hubs, and enterprise client conversion.",
+    demos: [
+      {
+        icon: "👥",
+        label: "Partner Directory",
+        bg: "#0d1b2a",
+        accent: "#64b5f6",
+        desc: "Filters lawyers by expertise, jurisdiction, and legal specialization.",
+      },
+      {
+        icon: "🔎",
+        label: "Search System",
+        bg: "#0b1736",
+        accent: "#90caf9",
+        desc: "Helps clients discover the right legal support quickly.",
+      },
+      {
+        icon: "📰",
+        label: "Resource Hub",
+        bg: "#082032",
+        accent: "#4fc3f7",
+        desc: "Publishes law updates and strengthens search visibility.",
       },
     ],
     liveUrl: "#",
@@ -189,20 +260,20 @@ const projects = [
 
 const highlights = [
   {
-    title: "AI & Software Development",
-    desc: "Custom web apps, mobile apps, AI integration, SaaS platforms, and secure enterprise systems.",
+    title: "Healthcare & Retail AI Automation",
+    desc: "AI receptionists, boutique assistants, omnichannel workflows, booking automation, CRM updates, and smart customer support.",
   },
   {
-    title: "Productivity & Automation",
-    desc: "Workflow automation, CRM tools, smart dashboards, and digital workspace enablement.",
+    title: "SaaS Product Engineering",
+    desc: "PocketHelp and SmartBill AI style platforms with dashboards, PDF generation, inventory, billing, GST, and user management.",
   },
   {
-    title: "Cloud & DevOps",
-    desc: "Cloud architecture, deployment pipelines, scalable infrastructure, and monitoring solutions.",
+    title: "Finance & Legal Digital Platforms",
+    desc: "High-trust websites for audit firms, tax consultants, individual advocates, and enterprise legal institutions.",
   },
   {
-    title: "Cybersecurity & Strategy",
-    desc: "Threat detection, data protection, technical consulting, and product architecture planning.",
+    title: "Full-Stack Business Systems",
+    desc: "React, Next.js, MERN, n8n, GraphQL, Supabase, PostgreSQL, MongoDB, automation pipelines, and scalable architecture.",
   },
 ];
 const fadeUp = keyframes`
@@ -410,11 +481,12 @@ function ProjectCard({ project, height }) {
       <div
         style={{
           display: "flex",
-          gap: 8,
+          // gap: 8,
           padding: "10px 22px 22px",
           marginTop: "auto",
         }}
       >
+       
         <a
           href={project.liveUrl}
           target="_blank"
@@ -431,7 +503,7 @@ function ProjectCard({ project, height }) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            gap: 5,
+        
           }}
         >
           ↗ View Demo
@@ -790,8 +862,10 @@ const Project = () => {
               boxShadow: "0 24px 70px rgba(16,42,67,0.16)",
             }}
           />
+       
           </Box>
       <Services />
+         <ServiceEnquiry/>
     </div>
   );
 };

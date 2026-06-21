@@ -2,12 +2,27 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 import { keyframes } from "@mui/system";
 
+const lidOpenClose = keyframes`
+  0% {
+    transform: rotate(0deg) translate(0, 0);
+  }
+  35% {
+    transform: rotate(-28deg) translate(-25px, -85px);
+  }
+  70% {
+    transform: rotate(-28deg) translate(-25px, -85px);
+  }
+  100% {
+    transform: rotate(0deg) translate(0, 0);
+  }
+`;
+
 const paperOpen = keyframes`
   0% {
     opacity: 0;
     transform: translateY(35px) scaleY(0.15);
   }
-  45% {
+  35% {
     opacity: 1;
     transform: translateY(-65px) scaleY(0.15);
   }
@@ -30,11 +45,11 @@ const CourseCoupon = () => {
         cursor: "pointer",
 
         "&:hover .gift-lid": {
-          transform: "rotate(-28deg) translate(-25px, -85px)",
+          animation: `${lidOpenClose} 1.6s ease forwards`,
         },
 
         "&:hover .scholarship-paper": {
-          animation: `${paperOpen} 1.1s ease forwards`,
+          animation: `${paperOpen} 1.1s ease 0.25s forwards`,
         },
       }}
     >
@@ -59,7 +74,6 @@ const CourseCoupon = () => {
           overflow: "hidden",
         }}
       >
-        {/* Ribbon */}
         <Box
           sx={{
             position: "absolute",
@@ -123,7 +137,6 @@ const CourseCoupon = () => {
           position: "absolute",
           bottom: 82,
           zIndex: 5,
-          transition: "0.7s ease",
           transformOrigin: "left center",
           boxShadow: "0 8px 18px rgba(0,0,0,0.25)",
 

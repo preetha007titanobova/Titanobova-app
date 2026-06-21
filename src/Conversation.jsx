@@ -8,7 +8,7 @@ import {
   Stack,
 } from "@mui/material";
 import { toast } from "react-toastify";
-
+import Api from "./Api.js";
 import SendIcon from "@mui/icons-material/Send";
 // import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import { keyframes } from "@mui/system";
@@ -166,10 +166,12 @@ function Conversation() {
 
           <Typography
             variant="h4"
+            sx={{fontSize: { xs: "1.8rem", md: "2.3rem" },
+              fontWeight: 800, color: "#163372",
+              mb: 1,
+              textAlign: "center",}}
             
-            fontWeight={800}
-            color="#1E3A8A"
-            textAlign="center"
+          
           >
             Start a Conversation
           </Typography>

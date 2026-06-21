@@ -19,6 +19,7 @@ import Footer from "./Nav/Footer";
 import CustomerSupport from "./customerservice.jsx";
 import technology from "./technology.jsx"
 import TechnologySection from "./technology.jsx";
+import InternshipApply from "./InternshipApply.jsx"
 function App() {
   return (
     <>
@@ -50,8 +51,9 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/courses" element={<Courses/>}/>
         <Route path="/project" element={<Project />} />
-         <Route path="/customersupport" element={<CustomerSupport/>} />
+        <Route path="/customersupport" element={<CustomerSupport/>} />
         <Route path="/technology" element ={<TechnologySection/>}/>
+   <Route path="/interapply" element ={<InternshipApply/>}/>
       </Routes>
 
   <Footer/>

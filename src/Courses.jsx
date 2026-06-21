@@ -1,4 +1,3 @@
-
 import CloudQueueIcon from "@mui/icons-material/CloudQueue";
 import SettingsSuggestIcon from "@mui/icons-material/SettingsSuggest";
 import WebIcon from "@mui/icons-material/Web";
@@ -189,41 +188,41 @@ const CourseCard = ({ course }) => {
   const lvl = levelStyle[course.level] || levelStyle.Standard;
 
   return (
- <Box
-  sx={{
-    width: "100%",
-    height: "100%",
-    borderRadius: { xs: "16px", md: "24px" },
-    p: { xs: 3, sm: 2.5, md: 3 },
- 
-    background: "#ffffff",
-    border: "1px solid rgba(21,101,216,0.13)",
-    boxShadow: "0 18px 45px rgba(16,42,67,0.08)",
-    transition: "all 0.35s ease",
-    display: "flex",
-    flexDirection: "column",
-    "&:hover": {
-      transform: { md: "translateY(-10px)" },
-      boxShadow: "0 26px 70px rgba(21,101,216,0.18)",
-      borderColor: "#1565d8",
-    },
-  }}
->
+    <Box
+      sx={{
+        width: "100%",
+        height: "100%",
+        borderRadius: { xs: "16px", md: "24px" },
+        p: { xs: 3, sm: 2.5, md: 3 },
+
+        background: "#ffffff",
+        border: "1px solid rgba(21,101,216,0.13)",
+        boxShadow: "0 18px 45px rgba(16,42,67,0.08)",
+        transition: "all 0.35s ease",
+        display: "flex",
+        flexDirection: "column",
+        "&:hover": {
+          transform: { md: "translateY(-10px)" },
+          boxShadow: "0 26px 70px rgba(21,101,216,0.18)",
+          borderColor: "#1565d8",
+        },
+      }}
+    >
       <Box sx={{ display: "flex", justifyContent: "space-between", mb: 2 }}>
-     <Avatar
-  sx={{
-    width: { xs: 44, sm: 50, md: 54 },
-    height: { xs: 44, sm: 50, md: 54 },
-    bgcolor: "#eaf3ff",
-    color: "#1565d8",
-    fontSize: {
-      xs: "1.2rem",
-      md: "1.5rem",
-    },
-  }}
->
-  {course.icon}
-</Avatar>
+        <Avatar
+          sx={{
+            width: { xs: 44, sm: 50, md: 54 },
+            height: { xs: 44, sm: 50, md: 54 },
+            bgcolor: "#eaf3ff",
+            color: "#1565d8",
+            fontSize: {
+              xs: "1.2rem",
+              md: "1.5rem",
+            },
+          }}
+        >
+          {course.icon}
+        </Avatar>
 
         <Chip
           label={course.level}
@@ -237,22 +236,22 @@ const CourseCard = ({ course }) => {
         />
       </Box>
 
-   <Typography
-  sx={{
-    color: "#102a43",
-    fontWeight: 900,
-    fontSize: {
-      xs: "0.95rem",
-      sm: "1rem",
-      md: "1.05rem",
-      lg: "1.15rem",
-    },
-    mb: 1,
-    lineHeight: 1.35,
-  }}
->
-  {course.title}
-</Typography>
+      <Typography
+        sx={{
+          color: "#102a43",
+          fontWeight: 900,
+          fontSize: {
+            xs: "0.95rem",
+            sm: "1rem",
+            md: "1.05rem",
+            lg: "1.15rem",
+          },
+          mb: 1,
+          lineHeight: 1.35,
+        }}
+      >
+        {course.title}
+      </Typography>
 
       <Typography
         sx={{
@@ -392,7 +391,7 @@ const Courses = () => {
 
             <Typography
               sx={{
-                fontSize: {md:"0.7rem",xs:"0.5rem",sm:"0.5rem"},
+                fontSize: { md: "0.7rem", xs: "0.5rem", sm: "0.5rem" },
                 fontWeight: 900,
                 letterSpacing: "0.14em",
                 textTransform: "uppercase",
@@ -403,7 +402,6 @@ const Courses = () => {
             </Typography>
           </Box>
 
-   
           <Typography
             sx={{
               fontWeight: 900,
@@ -416,7 +414,6 @@ const Courses = () => {
           >
             Learn by Building
             <br />
-
             <Box
               component="span"
               sx={{
@@ -486,8 +483,7 @@ const Courses = () => {
               borderRadius: "28px",
               p: { xs: 3, md: 5 },
               border: "1px solid #bfdbfe",
-              background:
-                "linear-gradient(135deg, #ffffff 0%, #eaf3ff 100%)",
+              background: "linear-gradient(135deg, #ffffff 0%, #eaf3ff 100%)",
               textAlign: "center",
               boxShadow: "0 22px 70px rgba(21,101,216,0.12)",
               mb: showAllCourses ? 5 : 8,
@@ -529,7 +525,7 @@ const Courses = () => {
               sx={{
                 px: 4,
                 py: 1.3,
-              
+
                 borderRadius: 50,
                 textTransform: "none",
                 fontWeight: 800,
@@ -547,53 +543,53 @@ const Courses = () => {
         </Box>
 
         {/* All Courses Section */}
-      {showAllCourses && (
-  <Box
-    sx={{
-      maxWidth: 1250,
-      mx: "auto",
-      px: { xs: 2, sm: 3 },
-      mb: 9,
-      mt: 4,
+        {showAllCourses && (
+          <Box
+            sx={{
+              maxWidth: 1250,
+              mx: "auto",
+              px: { xs: 2, sm: 3 },
+              mb: 9,
+              mt: 4,
 
-      display: "grid",
-      gridTemplateColumns: {
-        xs: "1fr",
-        sm: "repeat(2, 1fr)",
-        lg: "repeat(3, 1fr)",
-      },
+              display: "grid",
+              gridTemplateColumns: {
+                xs: "1fr",
+                sm: "repeat(2, 1fr)",
+                lg: "repeat(3, 1fr)",
+              },
 
-      columnGap: {
-        xs: 5,
-        sm: 3,
-        md: 4,
-      },
+              columnGap: {
+                xs: 5,
+                sm: 3,
+                md: 4,
+              },
 
-      rowGap: {
-        xs: 7,
-        sm: 4,
-        md: 8,
-      },
+              rowGap: {
+                xs: 7,
+                sm: 4,
+                md: 8,
+              },
 
-      animation: `${fadeUp} 0.8s ease`,
-    }}
-  >
-    {courses.map((course, index) => (
-      <Box
-        key={course.id}
-        sx={{
-          animation: `${fadeUp} 0.8s ease both`,
-          animationDelay: `${index * 0.1}s`,
-          transition: "all 0.4s ease",
-          minHeight: "100%",
-          display: "flex",
-        }}
-      >
-        <CourseCard course={course} />
-      </Box>
-    ))}
-  </Box>
-)}
+              animation: `${fadeUp} 0.8s ease`,
+            }}
+          >
+            {courses.map((course, index) => (
+              <Box
+                key={course.id}
+                sx={{
+                  animation: `${fadeUp} 0.8s ease both`,
+                  animationDelay: `${index * 0.1}s`,
+                  transition: "all 0.4s ease",
+                  minHeight: "100%",
+                  display: "flex",
+                }}
+              >
+                <CourseCard course={course} />
+              </Box>
+            ))}
+          </Box>
+        )}
 
         {/* Features Section */}
         <Box sx={{ maxWidth: 1100, mx: "auto", mt: 3, px: 2 }}>
@@ -610,10 +606,8 @@ const Courses = () => {
           >
             Why Choose Our Learning Model
           </Typography>
-
-       
         </Box>
-            <Box
+        <Box
           sx={{
             width: "100%",
             maxWidth: "1400px",
@@ -643,117 +637,191 @@ const Courses = () => {
             }}
           />
         </Box>
-           <Box
-            sx={{
-              display: "grid",
-              gridTemplateColumns: {
-                xs: "1fr",
-                sm: "1fr 1fr",
-                md: "repeat(4, 1fr)",
-              },
-              gap: 2,
-              mb: 4,
-            }}
-          >
-            {features.map((f, i) => (
-              <Box
-                key={i}
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: {
+              xs: "1fr",
+              sm: "1fr 1fr",
+              md: "repeat(4, 1fr)",
+            },
+            gap: 2,
+            mb: 4,
+          }}
+        >
+          {features.map((f, i) => (
+            <Box
+              key={i}
+              sx={{
+                background: "#ffffff",
+                border: "1px solid #dbeafe",
+                borderRadius: "20px",
+                p: 2.5,
+                boxShadow: "0 16px 40px rgba(16,42,67,0.07)",
+                animation: `${fadeUp} 0.8s ease ${i * 0.12}s both`,
+                transition: "all 0.35s ease",
+                "&:hover": {
+                  transform: "translateY(-8px)",
+                  boxShadow: "0 22px 60px rgba(21,101,216,0.15)",
+                },
+              }}
+            >
+              <Typography sx={{ fontSize: "1.7rem", mb: 1 }}>
+                {f.icon}
+              </Typography>
+
+              <Typography
                 sx={{
-                  background: "#ffffff",
-                  border: "1px solid #dbeafe",
-                  borderRadius: "20px",
-                  p: 2.5,
-                  boxShadow: "0 16px 40px rgba(16,42,67,0.07)",
-                  animation: `${fadeUp} 0.8s ease ${i * 0.12}s both`,
-                  transition: "all 0.35s ease",
-                  "&:hover": {
-                    transform: "translateY(-8px)",
-                    boxShadow: "0 22px 60px rgba(21,101,216,0.15)",
-                  },
+                  color: "#102a43",
+                  fontWeight: 900,
+                  fontSize: "0.95rem",
+                  mb: 0.7,
                 }}
               >
-                <Typography sx={{ fontSize: "1.7rem", mb: 1 }}>
-                  {f.icon}
-                </Typography>
+                {f.title}
+              </Typography>
 
-                <Typography
-                  sx={{
-                    color: "#102a43",
-                    fontWeight: 900,
-                    fontSize: "0.95rem",
-                    mb: 0.7,
-                  }}
-                >
-                  {f.title}
-                </Typography>
+              <Typography
+                sx={{
+                  color: "#52606d",
+                  fontSize: "0.8rem",
+                  lineHeight: 1.7,
+                }}
+              >
+                {f.desc}
+              </Typography>
+            </Box>
+          ))}
+        </Box>
+        <Box
+          sx={{
+            maxWidth: 1250,
+            mx: "auto",
+            px: 2,
+            mt: 8,
+            mb: 8,
+          }}
+        >
+          <Typography
+            sx={{
+              textAlign: "center",
+              fontSize: { xs: "2rem", md: "3rem" },
+              fontWeight: 900,
+              color: "#102a43",
+              mb: 2,
+              fontFamily: "serif",
+            }}
+          >
+            Internship Programs
+          </Typography>
 
-                <Typography
-                  sx={{
-                    color: "#52606d",
-                    fontSize: "0.8rem",
-                    lineHeight: 1.7,
-                  }}
-                >
-                  {f.desc}
-                </Typography>
-              </Box>
-            ))}
+          <Typography
+            sx={{
+              textAlign: "center",
+              maxWidth: 800,
+              mx: "auto",
+              color: "#52606d",
+              mb: 5,
+              lineHeight: 1.8,
+            }}
+          >
+            Kickstart your career through hands-on industrial training and
+            real-world project experience. Choose between Paid and Unpaid
+            Internship tracks based on your learning goals and career
+            objectives.
+          </Typography>
+          <Box
+            sx={{
+           
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+             
+            }}
+          >
+            <Button
+              variant="contained"
+              onClick={() => (window.location.href = "/interapply")}
+              sx={{
+                mt: 3,
+             
+                px: 4,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                // background: item.color,
+              
+            
+                  borderRadius: 50,
+                textTransform: "none",
+                fontWeight: 800,
+                background: "linear-gradient(135deg, #1565d8, #003b88)",
+                boxShadow: "0 14px 35px rgba(21,101,216,0.25)",
+                "&:hover": {
+                  background: "linear-gradient(135deg, #003b88, #1565d8)",
+                  transform: "translateY(-2px)",
+                },
+              }}
+            >
+              Visit Internships
+            </Button>
           </Box>
-{/* Fixed Coupon Card */}
-{/* Fixed Coupon Card */}
-<Box
-  sx={{
-    position: "fixed",
-    bottom: {
-      xs: 10,
-      sm: 16,
-      md: 20,
-    },
-    right: {
-      xs: 8,
-      sm: 14,
-      md: 20,
-    },
-    zIndex: 9999,
-    background: "transparent",
-    cursor: "pointer",
+        </Box>
+        {/* Fixed Coupon Card */}
+        {/* Fixed Coupon Card */}
+        <Box
+          sx={{
+            position: "fixed",
+            bottom: {
+              xs: 10,
+              sm: 16,
+              md: 20,
+            },
+            right: {
+              xs: 8,
+              sm: 14,
+              md: 20,
+            },
+            zIndex: 9999,
+            background: "transparent",
+            cursor: "pointer",
 
-    transform: {
-      xs: "scale(0.55)",
-      sm: "scale(0.7)",
-      md: "scale(0.85)",
-      lg: "scale(1)",
-    },
+            transform: {
+              xs: "scale(0.55)",
+              sm: "scale(0.7)",
+              md: "scale(0.85)",
+              lg: "scale(1)",
+            },
 
-    transformOrigin: "bottom right",
+            transformOrigin: "bottom right",
 
-    animation: "floatCoupon 3s ease-in-out infinite",
+            animation: "floatCoupon 3s ease-in-out infinite",
 
-    "@keyframes floatCoupon": {
-      "0%,100%": {
-        transform: {
-          xs: "scale(0.55) translateY(0px)",
-          sm: "scale(0.7) translateY(0px)",
-          md: "scale(0.85) translateY(0px)",
-          lg: "scale(1) translateY(0px)",
-        },
-      },
-      "50%": {
-        transform: {
-          xs: "scale(0.55) translateY(-8px)",
-          sm: "scale(0.7) translateY(-8px)",
-          md: "scale(0.85) translateY(-8px)",
-          lg: "scale(1) translateY(-8px)",
-        },
-      },
-    },
-  }}
-  onClick={() => {
-    window.location.href = "/course-fill";
-  }}
->
-  <CourseCoupon />
-</Box>
+            "@keyframes floatCoupon": {
+              "0%,100%": {
+                transform: {
+                  xs: "scale(0.55) translateY(0px)",
+                  sm: "scale(0.7) translateY(0px)",
+                  md: "scale(0.85) translateY(0px)",
+                  lg: "scale(1) translateY(0px)",
+                },
+              },
+              "50%": {
+                transform: {
+                  xs: "scale(0.55) translateY(-8px)",
+                  sm: "scale(0.7) translateY(-8px)",
+                  md: "scale(0.85) translateY(-8px)",
+                  lg: "scale(1) translateY(-8px)",
+                },
+              },
+            },
+          }}
+          // onClick={() => {
+          //   window.location.href = "/course-fill";
+          // }}
+        >
+          <CourseCoupon />
+        </Box>
       </Box>
     </Box>
   );

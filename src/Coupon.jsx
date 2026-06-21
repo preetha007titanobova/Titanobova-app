@@ -17,6 +17,7 @@ import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import QrCodeScannerIcon from "@mui/icons-material/QrCodeScanner";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import axios from "axios";
+import Api from "./Api.js";
 import { toast } from "react-toastify";
 
 const courses = ["React JS", "Node JS", "MERN Stack", "Python", "UI/UX Design"];
@@ -63,10 +64,7 @@ const CouponEnrollment = () => {
     }
 
     try {
-      const { data } = await axios.post(
-        "http://localhost:7000/api/v1/enrollment/create-order",
-        formData
-      );
+      const { data } = await axios.post(`${Api}/create-order`, formData);
 
       const options = {
         key: data.key,
@@ -91,7 +89,7 @@ const CouponEnrollment = () => {
 
         handler: async function (response) {
           const verifyRes = await axios.post(
-            "http://localhost:7000/api/v1/enrollment/verify-payment",
+            `${Api}/enrollment/verify-payment`,
             {
               enrollmentId: data.enrollmentId,
               razorpay_order_id: response.razorpay_order_id,
@@ -100,7 +98,9 @@ const CouponEnrollment = () => {
             }
           );
 
-          toast.success(`Payment successful! Coupon: ${verifyRes.data.couponCode}`);
+          toast.success(
+            `Payment successful! Coupon: ${verifyRes.data.couponCode}`
+          );
 
           setFormData({
             name: "",
@@ -112,7 +112,7 @@ const CouponEnrollment = () => {
         },
 
         theme: {
-          color: "#0f766e",
+          color: "#0f3076",
         },
       };
 
@@ -126,28 +126,29 @@ const CouponEnrollment = () => {
   return (
     <Box
       sx={{
-        minHeight: "10vh",
-        py: { xs: 3, md: 5 },
-        px: 2,
+        minHeight: "100vh",
+        py: { xs: 2, sm: 4, md: 6 },
+        px: { xs: 1.5, sm: 2 },
+        display: "flex",
+        alignItems: "center",
         background:
           "linear-gradient(135deg, #ecfeff 0%, #f8fafc 45%, #ecfdf5 100%)",
       }}
     >
-      <Container maxWidth="md">
+      <Container maxWidth="md" sx={{ px: { xs: 0, sm: 2 } }}>
         <Paper
           elevation={0}
           sx={{
             display: "grid",
             gridTemplateColumns: { xs: "1fr", md: "1fr 1.1fr" },
+            borderRadius: { xs: "18px", sm: "26px" },
             overflow: "hidden",
-            borderRadius: "26px",
             boxShadow: "0 24px 70px rgba(15, 23, 42, 0.14)",
           }}
         >
-          {/* LEFT CONTENT */}
           <Box
             sx={{
-              p: { xs: 3, sm: 4 },
+              p: { xs: 2.5, sm: 4 },
               background: "linear-gradient(160deg, #0f3076, #0f172a)",
               color: "#fff",
             }}
@@ -162,25 +163,43 @@ const CouponEnrollment = () => {
               }}
             />
 
-            <Typography variant="h4" fontWeight={900} sx={{ mb: 1 }}>
+            <Typography
+              variant="h4"
+              fontWeight={900}
+              sx={{
+                mb: 1,
+                fontSize: { xs: "1.7rem", sm: "2.1rem" },
+                lineHeight: 1.2,
+              }}
+            >
               Join Your Course Today
             </Typography>
 
-            <Typography sx={{ color: "rgba(255,255,255,0.78)", mb: 3 }}>
+            <Typography
+              sx={{
+                color: "rgba(255,255,255,0.78)",
+                mb: 3,
+                fontSize: { xs: 14, sm: 15 },
+              }}
+            >
               Complete your enrollment securely using Razorpay and get your
               course coupon instantly after payment.
             </Typography>
 
             <Box
               sx={{
-                bgcolor: "rgba(60, 75, 174, 0.12)",
-                p: 2,
+                bgcolor: "rgba(255,255,255,0.12)",
+                p: { xs: 1.8, sm: 2 },
                 borderRadius: "18px",
                 mb: 3,
               }}
             >
               <Typography fontSize={14}>Course Fee</Typography>
-              <Typography variant="h4" fontWeight={900}>
+              <Typography
+                variant="h4"
+                fontWeight={900}
+                sx={{ fontSize: { xs: "1.8rem", sm: "2.1rem" } }}
+              >
                 ₹4500
               </Typography>
               <Typography fontSize={13} color="rgba(255,255,255,0.7)">
@@ -194,27 +213,51 @@ const CouponEnrollment = () => {
               "UPI, Card, Net Banking and Wallet support",
               "Beginner-friendly course access",
             ].map((item) => (
-              <Stack key={item} direction="row" spacing={1.2} sx={{ mb: 1.4 }}>
-                <CheckCircleIcon sx={{ fontSize: 20, color: "#86efac" }} />
-                <Typography fontSize={14}>{item}</Typography>
+              <Stack
+                key={item}
+                direction="row"
+                spacing={1.2}
+                alignItems="flex-start"
+                sx={{ mb: 1.4 }}
+              >
+                <CheckCircleIcon
+                  sx={{
+                    fontSize: 20,
+                    color: "#86efac",
+                    mt: "2px",
+                    flexShrink: 0,
+                  }}
+                />
+                <Typography fontSize={{ xs: 13.5, sm: 14 }}>{item}</Typography>
               </Stack>
             ))}
           </Box>
 
-          {/* FORM */}
-          <Box sx={{ p: { xs: 3, sm: 4 } }}>
+          <Box sx={{ p: { xs: 2.5, sm: 4 } }}>
             <Box sx={{ textAlign: "center", mb: 3 }}>
-              <LocalOfferIcon sx={{ fontSize: 42, color: "#0f3076", mb: 1 }} />
-              <Typography variant="h5" fontWeight={900}>
+              <LocalOfferIcon
+                sx={{
+                  fontSize: { xs: 36, sm: 42 },
+                  color: "#0f3076",
+                  mb: 1,
+                }}
+              />
+
+              <Typography
+                variant="h5"
+                fontWeight={900}
+                sx={{ fontSize: { xs: "1.35rem", sm: "1.5rem" } }}
+              >
                 Course Enrollment
               </Typography>
-              <Typography color="text.secondary" fontSize={14}>
+
+              <Typography color="text.secondary" fontSize={{ xs: 13, sm: 14 }}>
                 Fill your details and complete payment.
               </Typography>
             </Box>
 
             <Box component="form" onSubmit={handleSubmit}>
-              <Stack spacing={1}>
+              <Stack spacing={{ xs: 1.5, sm: 2 }}>
                 <TextField
                   fullWidth
                   label="Full Name"
@@ -222,6 +265,7 @@ const CouponEnrollment = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
+                  size="small"
                 />
 
                 <TextField
@@ -232,6 +276,7 @@ const CouponEnrollment = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
+                  size="small"
                 />
 
                 <TextField
@@ -241,6 +286,7 @@ const CouponEnrollment = () => {
                   value={formData.phoneNumber}
                   onChange={handleChange}
                   required
+                  size="small"
                 />
 
                 <TextField
@@ -251,6 +297,7 @@ const CouponEnrollment = () => {
                   value={formData.courseName}
                   onChange={handleChange}
                   required
+                  size="small"
                 >
                   {courses.map((course) => (
                     <MenuItem key={course} value={course}>
@@ -267,7 +314,10 @@ const CouponEnrollment = () => {
               <Box
                 sx={{
                   display: "grid",
-                  gridTemplateColumns: "repeat(2, 1fr)",
+                  gridTemplateColumns: {
+                    xs: "1fr",
+                    sm: "repeat(2, 1fr)",
+                  },
                   gap: 1.5,
                   mb: 3,
                 }}
@@ -298,6 +348,7 @@ const CouponEnrollment = () => {
                           ? "#0f3076"
                           : "#334155",
                       fontWeight: 800,
+                      fontSize: { xs: 14, sm: 15 },
                     }}
                   >
                     {item.icon}
@@ -312,11 +363,11 @@ const CouponEnrollment = () => {
                 variant="contained"
                 size="large"
                 sx={{
-                  py: 1.5,
+                  py: { xs: 1.2, sm: 1.5 },
                   borderRadius: "14px",
                   fontWeight: 900,
                   textTransform: "none",
-                  fontSize: "16px",
+                  fontSize: { xs: "14px", sm: "16px" },
                   bgcolor: "#0f3076",
                   "&:hover": {
                     bgcolor: "#3d37ab",
