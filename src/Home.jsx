@@ -343,7 +343,7 @@ const Home = () => {
           <Button
             onClick={() => (window.location.href = "/conversation")}
             sx={{
-              mt: { xs: 3, md: 2 },
+              mt: { xs: 3, md: 7 },
               minWidth: { xs: 56, md: 48 },
               height: { xs: 56, md: 48 },
               borderRadius: "50%",
