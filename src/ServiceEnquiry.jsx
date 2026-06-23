@@ -12,7 +12,6 @@ import {
 } from "@mui/material";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import SendIcon from "@mui/icons-material/Send";
-import axios from "axios";
 import { toast } from "react-toastify";
 import Api from "./Api.js";
 
@@ -42,10 +41,7 @@ const ServiceEnquiry = () => {
   });
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
@@ -69,7 +65,6 @@ const ServiceEnquiry = () => {
 
     try {
       await Api.post("/serviceenquiry/create", formData);
-
       toast.success("Your enquiry submitted successfully!");
 
       setFormData({
@@ -89,8 +84,9 @@ const ServiceEnquiry = () => {
   return (
     <Box
       sx={{
-        py: { xs: 5, md: 8 },
-        px: 2,
+        minHeight: "100vh",
+        py: { xs: 4, sm: 5, md: 8 },
+        px: { xs: 1.5, sm: 2 },
         background:
           "linear-gradient(135deg, #eef6ff 0%, #ffffff 50%, #eaf3ff 100%)",
       }}
@@ -99,13 +95,16 @@ const ServiceEnquiry = () => {
         <Paper
           elevation={0}
           sx={{
-            p: { xs: 3, md: 5 },
-            borderRadius: "28px",
+            p: { xs: 2.5, sm: 3.5, md: 5 },
+            borderRadius: { xs: "18px", sm: "24px", md: "28px" },
             boxShadow: "0 25px 70px rgba(15,48,118,0.14)",
             border: "1px solid rgba(21,101,216,0.12)",
             display: "grid",
-            gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
-            gap: 4,
+            gridTemplateColumns: {
+              xs: "1fr",
+              md: "1fr 1fr",
+            },
+            gap: { xs: 3, md: 5 },
             alignItems: "center",
           }}
         >
@@ -118,15 +117,16 @@ const ServiceEnquiry = () => {
                 bgcolor: "#eaf3ff",
                 color: "#0f3076",
                 fontWeight: 800,
+                fontSize: { xs: 12, sm: 14 },
               }}
             />
 
             <Typography
               sx={{
-                fontSize: { xs: "2rem", md: "2.7rem" },
+                fontSize: { xs: "1.8rem", sm: "2.2rem", md: "2.7rem" },
                 fontWeight: 900,
                 color: "#102a43",
-                fontFamily:"-apple-system",
+                fontFamily: "-apple-system",
                 lineHeight: 1.2,
                 mb: 2,
               }}
@@ -138,7 +138,7 @@ const ServiceEnquiry = () => {
               sx={{
                 color: "#52606d",
                 lineHeight: 1.8,
-                fontSize: { xs: 15, md: 16 },
+                fontSize: { xs: 14, sm: 15, md: 16 },
                 mb: 2,
               }}
             >
@@ -151,13 +151,11 @@ const ServiceEnquiry = () => {
               sx={{
                 color: "#52606d",
                 lineHeight: 1.8,
-                fontSize: { xs: 15, md: 16 },
+                fontSize: { xs: 14, sm: 15, md: 16 },
               }}
             >
-              Our goal is to understand your business clearly and deliver a
-              secure, scalable, and user-friendly digital solution. Share your
-              requirement with us and our team will contact you with the best
-              solution plan.
+              Share your requirement with us and our team will contact you with
+              the best solution plan.
             </Typography>
 
             <Box sx={{ mt: 3 }}>
@@ -173,7 +171,7 @@ const ServiceEnquiry = () => {
                     mb: 1,
                     color: "#102a43",
                     fontWeight: 700,
-                    fontSize: 15,
+                    fontSize: { xs: 14, sm: 15 },
                   }}
                 >
                   ✅ {item}
@@ -183,64 +181,26 @@ const ServiceEnquiry = () => {
           </Box>
 
           <Box component="form" onSubmit={handleSubmit}>
-            <Stack spacing={2}>
+            <Stack spacing={{ xs: 1.7, sm: 2 }}>
               <Typography
                 sx={{
-                  fontSize: "1.4rem",
+                  fontSize: { xs: "1.2rem", sm: "1.4rem" },
                   fontWeight: 900,
                   color: "#0f3076",
-                  mb: 1,
                 }}
               >
                 Get Service Details
               </Typography>
 
-              <TextField
-                label="Full Name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                fullWidth
-                required
-              />
+              <TextField label="Full Name" name="name" value={formData.name} onChange={handleChange} fullWidth required />
 
-              <TextField
-                label="Email Address"
-                name="email"
-                type="email"
-                value={formData.email}
-                onChange={handleChange}
-                fullWidth
-                required
-              />
+              <TextField label="Email Address" name="email" type="email" value={formData.email} onChange={handleChange} fullWidth required />
 
-              <TextField
-                label="Organisation / Company Name"
-                name="organisation"
-                value={formData.organisation}
-                onChange={handleChange}
-                fullWidth
-                helperText="Optional"
-              />
+              <TextField label="Organisation / Company Name" name="organisation" value={formData.organisation} onChange={handleChange} fullWidth helperText="Optional" />
 
-              <TextField
-                label="Contact Number"
-                name="contact"
-                value={formData.contact}
-                onChange={handleChange}
-                fullWidth
-                required
-              />
+              <TextField label="Contact Number" name="contact" value={formData.contact} onChange={handleChange} fullWidth required />
 
-              <TextField
-                select
-                label="What type of service do you need?"
-                name="serviceType"
-                value={formData.serviceType}
-                onChange={handleChange}
-                fullWidth
-                required
-              >
+              <TextField select label="What type of service do you need?" name="serviceType" value={formData.serviceType} onChange={handleChange} fullWidth required>
                 {serviceOptions.map((service) => (
                   <MenuItem key={service} value={service}>
                     {service}
@@ -249,14 +209,7 @@ const ServiceEnquiry = () => {
               </TextField>
 
               {formData.serviceType === "Other" && (
-                <TextField
-                  label="Enter Your Service Requirement"
-                  name="otherService"
-                  value={formData.otherService}
-                  onChange={handleChange}
-                  fullWidth
-                  required
-                />
+                <TextField label="Enter Your Service Requirement" name="otherService" value={formData.otherService} onChange={handleChange} fullWidth required />
               )}
 
               <TextField
@@ -268,22 +221,20 @@ const ServiceEnquiry = () => {
                 required
                 multiline
                 rows={4}
-                placeholder="Tell us about your business need, project idea, software requirement, or support needed..."
               />
 
               <Button
                 type="submit"
                 variant="contained"
                 endIcon={<SendIcon />}
+                fullWidth
                 sx={{
                   py: 1.5,
                   borderRadius: "14px",
                   textTransform: "none",
                   fontWeight: 900,
                   bgcolor: "#0f3076",
-                  "&:hover": {
-                    bgcolor: "#102a43",
-                  },
+                  "&:hover": { bgcolor: "#102a43" },
                 }}
               >
                 Submit Enquiry
