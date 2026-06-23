@@ -23,6 +23,7 @@ const Header = () => {
   const [courseAnchor, setCourseAnchor] = useState(null);
 
   const aboutSubMenu = [
+     { text: "About Us", link: "/about" },
     { text: "Who We Are", link: "/who-we-are" },
     { text: "Technology", link: "/technology" },
     { text: "Vision", link: "/about" },
