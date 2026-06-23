@@ -587,19 +587,21 @@ const Project = () => {
           Technology Portfolio
         </div>
 
-        <h1
-          style={{
-            fontSize: "clamp(2rem, 5vw, 3.3rem)",
-            fontWeight: 900,
-            color: TEXT_DARK,
-            letterSpacing: "-0.03em",
-            lineHeight: 1.12,
-             fontFamily:"-moz-initial",
-            margin: 0,
-          }}
-        >
-          Intelligent Digital Products Built for Real Business Growth
-        </h1>
+       <h1
+  style={{
+    fontSize: "clamp(1.8rem, 4vw, 3.8rem)",
+    fontWeight: 800,
+    color: "#0F4C81", // Professional corporate blue
+    letterSpacing: "-0.04em",
+    lineHeight: 1.15,
+    margin: 0,
+    fontFamily:
+      "'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif",
+    maxWidth: "900px",
+  }}
+>
+  Intelligent Digital Products Built for Real Business Growth
+</h1>
 
         <p
           style={{
