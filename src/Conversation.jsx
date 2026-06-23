@@ -57,14 +57,11 @@ function Conversation() {
     console.log(formData);
     
   try {
-    const response =  await fetch("http://localhost:7000/api/v1/conversation/create", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    }
-);
+  const response = await Api.post(
+     "/conversation/create",
+      formData
+    );
+
 
 
     const data = await response.json();
