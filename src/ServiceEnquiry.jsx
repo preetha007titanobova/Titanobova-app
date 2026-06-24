@@ -85,6 +85,7 @@ const ServiceEnquiry = () => {
     <Box
       sx={{
         minHeight: "100vh",
+        width:"100%",
         py: { xs: 4, sm: 5, md: 8 },
         px: { xs: 1.5, sm: 2 },
         background:

@@ -274,21 +274,25 @@ const Services = () => {
               boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
             }}
           >
-            <Box
-              component="img"
-              src={stair}
-              alt="Project Development"
-              sx={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                display: "block",
-                transition: "transform 0.6s ease",
-                "&:hover": {
-                  transform: "scale(1.05)",
-                },
-              }}
-            />
+     <Box
+  component="img"
+  src={stair}
+  alt="Project Development"
+  sx={{
+    width: "100%",
+    height: {
+      xs: "100%",     // 0 - 599px
+      sm: "140%",     // 600 - 899px
+      md: "120%",     // 900 - 1199px
+      lg: "100%",     // 1200px+
+    },
+    display: "block",
+    transition: "transform 0.6s ease",
+    "&:hover": {
+      transform: "scale(1.05)",
+    },
+  }}
+/>
           </Box>
 
           {/* Right Cards */}

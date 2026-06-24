@@ -593,10 +593,10 @@ const Project = () => {
     fontWeight: 800,
     color: "#0F4C81", // Professional corporate blue
     letterSpacing: "-0.04em",
+     fontFamily: "-apple-system",
     lineHeight: 1.15,
     margin: 0,
-    fontFamily:
-      "'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif",
+   
     maxWidth: "900px",
   }}
 >

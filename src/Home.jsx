@@ -86,7 +86,7 @@ const Home = () => {
   sx={{
     width: "100%",
     height: {
-      xs: "180px",
+      xs: "200px",
       sm: "280px",
       md: "420px",
       lg: "650px", 
@@ -102,7 +102,7 @@ const Home = () => {
           sx={{
             width: "100%",
             height: "120%",
-            objectFit: "cover",
+            // objectFit: "cover",
             display: "block",
           }}
         />
@@ -119,10 +119,10 @@ const Home = () => {
           <Box sx={{ textAlign: "center", maxWidth: 850, mx: "auto" }}>
             <Typography
               sx={{
-                fontFamily,
+              
                 color: "#1565d8",
                 fontWeight: 800,
-                    fontFamily:"-apple-system",
+                fontFamily:"-apple-system",
                 letterSpacing: "2px",
                 textTransform: "uppercase",
                 mb: 1.5,
