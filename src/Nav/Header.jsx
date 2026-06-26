@@ -84,7 +84,7 @@ const Header = () => {
                 letterSpacing: "1px",
               }}
             >
-              Titanobova
+                TITANOBOVA
             </Typography>
           </Box>
 

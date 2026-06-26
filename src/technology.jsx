@@ -97,7 +97,7 @@ const TechnologySection = () => {
           <Typography
             sx={{
               maxWidth: 900,
-              mx: "auto",
+              // mx: "auto",
               color: "#52606d",
               lineHeight: { xs: 1.7, md: 1.8 },
               fontSize: {
@@ -117,14 +117,14 @@ const TechnologySection = () => {
             operations, enhance productivity, and accelerate business growth.
           </Typography>
         </Box>
-
+<br/>
         <Box
           sx={{
             width: "100%",
-            maxWidth: "1400px",
+            // maxWidth: "1400px",
             mx: "auto",
             mb: { xs: 5, sm: 6, md: 8 },
-            px: { xs: 0, sm: 2, md: 3 },
+            // px: { xs: 0, sm: 2, md: 3 },
             animation: `${fadeUp} 1s ease forwards`,
           }}
         >
@@ -141,7 +141,7 @@ const TechnologySection = () => {
                 md: 560,
                 lg: 720,
               },
-              objectFit: "cover",
+              // objectFit: "cover",
               objectPosition: "center",
               borderRadius: { xs: "16px", sm: "22px", md: "28px" },
               boxShadow: {

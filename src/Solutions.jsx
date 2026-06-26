@@ -221,10 +221,11 @@ const SolutionCard = ({ solution, cardindex, row, animPhase, animDelay }) => {
             color: "text.secondary",
             lineHeight: 1.6,
             mb: 2,
-            fontSize: {
-              xs: "0.9rem",
-              sm: "0.85rem",
-              md: "0.95rem",
+                         fontSize: {
+              xs: "0.92rem",
+              sm:"1.0rem",
+              md: "0.82rem",
+              lg: "1.05rem",
             },
             display: "-webkit-box",
             WebkitLineClamp: {
@@ -239,37 +240,10 @@ const SolutionCard = ({ solution, cardindex, row, animPhase, animDelay }) => {
           {solution.description}
         </Typography>
 
-        <Button
-          endIcon={<ArrowRightAltIcon />}
-          sx={{
-            mt: "auto",
-            color: "primary.main",
-            fontWeight: 700,
-            p: 0,
-            justifyContent: "flex-start",
-            textTransform: "none",
-            width: "fit-content",
-            fontSize: {
-              xs: "0.9rem",
-              sm: "0.85rem",
-              md: "0.95rem",
-            },
-            "&:hover": {
-              backgroundColor: "transparent",
-              "& .MuiButton-endIcon": {
-                transform: "translateX(5px)",
-              },
-            },
-            "& .MuiButton-endIcon": {
-              transition: "transform 0.3s ease",
-            },
-          }}
-        >
-          Learn more
-        </Button>
+        
       </CardContent>
 
-      <BottomGradient className="bottom-gradient" />
+      {/* <BottomGradient className="bottom-gradient" /> */}
     </StyledCard>
   );
 };

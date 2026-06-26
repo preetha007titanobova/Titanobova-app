@@ -468,7 +468,7 @@ const Courses = () => {
                 md: 560,
                 lg: 660,
               },
-              objectFit: "cover",
+            
               objectPosition: "center",
               borderRadius: "28px",
               boxShadow: "0 24px 70px rgba(16,42,67,0.16)",

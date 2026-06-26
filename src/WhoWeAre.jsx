@@ -22,6 +22,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import AiImage3 from "./assets/AiImage3.jpg";
 import AboutImage from "./assets/about-team.jpg";
 import AiImage from "./assets/ai-tech.jpg";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 const fadeUp = keyframes`
   from {
@@ -207,35 +208,52 @@ const WhoWeAre = () => {
               </Box>
             </Grid>
 
-            <Grid container spacing={5} alignItems="center" flexDirection="row">
-              {/* LEFT SIDE IMAGE */}
-              <Grid item xs={12} md={6}>
-                <Box
+          </Grid>
+          
+        </Container>
+        <Grid
+  container
+  sx={{
+    minHeight: { xs: "auto", md: "80vh" },
+gap:4,
+
+    flexDirection:"row"
+  }}
+>
+  {/* Left Image */}
+
+  <Grid item xs={12} md={2} sx={{ width:{md:"45%",sm:"100%",xs:"100%"},mt:7}}>
+    <Box
+      component="img"
+      src={AboutImage}
+      alt="Professional Team"
+      sx={{
+        width: "100%",
+      
+        height: {
+          xs: 320,
+          sm: 420,
+          md: "70vh",
+        },
+       
+        borderRadius: {
+          xs: "20px",
+          md: "0 40px 40px 0",
+        },
+        boxShadow: "0 30px 80px rgba(16,42,67,0.18)",
+      }}
+    />
+         <Box
                   sx={{
                     position: "relative",
                     width: "100%",
                     animation: `${floatImage} 4s ease-in-out infinite`,
                   }}
-                >
-                  <Box
-                    component="img"
-                    src={AboutImage}
-                    alt="Professional Team"
-                    sx={{
-                      // width:"50%",
-                      // borderRadius:"5%",
-                      ...SameSizeImage,
-
-                      boxShadow: "0 30px 80px rgba(16,42,67,0.22)",
-                    }}
-                  />
-
-                  {/* Floating Quote Card */}
-                  <Box
+                >  <Box
                     sx={{
                       position: "absolute",
-                      bottom: { xs: -25, sm: 25 },
-                      left: { xs: 20, sm: -30 },
+                      bottom: { xs: -35, sm: 25,md:30 },
+                      left: { xs: 20, sm: -10 },
                       maxWidth: 300,
                       p: 2.5,
                       borderRadius: "22px",
@@ -253,124 +271,161 @@ const WhoWeAre = () => {
                     >
                       “Innovation is not just what we build — it is how we
                       solve.”
-                    </Typography>
+                    </Typography></Box></Box>
+  </Grid>
 
-                    <Typography
-                      sx={{
-                        color: "#52606d",
-                        fontSize: "0.9rem",
-                      }}
-                    >
-                      Technology • Productivity • Creativity
-                    </Typography>
-                  </Box>
-                </Box>
-              </Grid>
+  {/* Right Card */}
+<Grid item xs={12} md={6}>
+  <Box
+    sx={{
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      height: "100%",
+      p: { xs: 2, sm: 3, md: 2 },
+    }}
+  >
+    <Box
+      sx={{
+        width: "100%",
+        maxWidth: { xs: "100%", sm: 500, md: 500, lg: 540 },
+        // bgcolor: "#fff",
+        borderRadius: "22px",
+        p: { xs: 2.5, sm: 3, md: 3.5 },
+        boxShadow: "0 18px 45px rgba(16,42,67,0.12)",
+      }}
+    >
+      <Chip
+        label="WHY CHOOSE TITANOBOVA"
+        color="primary"
+        size="small"
+        sx={{
+          mb: 1.8,
+          fontWeight: 700,
+          fontSize: "0.72rem",
+        }}
+      />
 
-              {/* RIGHT SIDE CONTENT */}
-              <Grid item xs={12} md={6}>
-                <Box
-                  sx={{
-                    animation: `${fadeUp} 0.9s ease both`,
-                  }}
-                >
-                  <Chip
-                    icon={<AutoAwesomeIcon />}
-                    label="WHY CHOOSE US"
-                    sx={{
-                      mb: 2,
-                      fontWeight: 700,
-                      color: "#1456b8",
-                      backgroundColor: "#e8f1ff",
-                    }}
-                  />
+      <Typography
+        sx={{
+          fontSize: {
+            xs: "1.6rem",
+            sm: "1.9rem",
+            md: "1.7rem",
+            lg: "1.9rem",
+          },
+            fontFamily: "-moz-initial",
+          fontWeight: 800,
+          color: "#102A43",
+          lineHeight: 1.25,
+          mb: 1.8,
+        }}
+      >
+        Empowering Businesses Through Intelligent Technology
+      </Typography>
 
-                  <Typography
-                    variant="h2"
-                    sx={{
-                      fontWeight: 900,
-                      fontFamily: "-moz-initial",
-                      color: "#102a43",
-                      fontSize: {
-                        xs: "2rem",
-                        md: "3rem",
-                      },
-                      lineHeight: 1.2,
-                      mb: 2,
-                    }}
-                  >
-                    Empowering Businesses Through Smart Technology
-                  </Typography>
+      <Typography
+        sx={{
+          color: "#52606D",
+          lineHeight: 1.8,
+          fontSize: {
+            xs: "0.92rem",
+            sm: "0.96rem",
+            md: "1rem",
+          },
+          mb: 2,
+        }}
+      >
+        We build secure, scalable, and intelligent software solutions that help
+        businesses automate operations, improve productivity, and accelerate
+        digital transformation.
+      </Typography>
 
-                  <Typography
-                    sx={{
-                      color: "#52606d",
-                      lineHeight: 1.9,
-                      fontSize: {
-                        xs: "1rem",
-                        md: "1.08rem",
-                      },
-                      mb: 3,
-                    }}
-                  >
-                    At Titanoboa Private Limited, we combine innovation,
-                    technology, and strategic thinking to build impactful
-                    digital solutions. Our mission is to help businesses scale
-                    efficiently through intelligent systems, automation, cloud
-                    solutions, and secure digital transformation.
-                  </Typography>
+      <Typography
+        sx={{
+          color: "#52606D",
+          lineHeight: 1.8,
+          fontSize: {
+            xs: "0.9rem",
+            sm: "0.95rem",
+            md: "0.98rem",
+          },
+          mb: 2.5,
+        }}
+      >
+        Our expertise spans AI, cloud computing, enterprise software, web
+        applications, and digital platforms that deliver measurable business
+        value.
+      </Typography>
 
-                  {/* Small Cards */}
-                  <Grid container spacing={2}>
-                    {[
-                      "AI-Powered Solutions",
-                      "Secure Architecture",
-                      "Scalable Systems",
-                      "Business Growth Focus",
-                    ].map((item, index) => (
-                      <Grid item xs={12} sm={6} key={index}>
-                        <Box
-                          sx={{
-                            p: 2,
-                            borderRadius: "18px",
-                            background: "#fff",
-                            border: "1px solid #e6edf7",
-                            boxShadow: "0 10px 25px rgba(16,42,67,0.08)",
-                            fontWeight: 700,
-                            color: "#102a43",
-                          }}
-                        >
-                          ✓ {item}
-                        </Box>
-                      </Grid>
-                    ))}
-                  </Grid>
+      <Grid container spacing={1.5}>
+        {[
+          "AI & Automation",
+          "Cloud Solutions",
+          "Enterprise Software",
+          "Modern Web Apps",
+          "Cyber Security",
+          "24/7 Support",
+        ].map((item) => (
+          <Grid item xs={12} sm={6} key={item}>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: 1,
+              }}
+            >
+              <CheckCircleIcon
+                sx={{
+                  color: "#1565D8",
+                  fontSize: 18,
+                }}
+              />
 
-                  <Button
-                    variant="contained"
-                    onClick={() => (window.location.href = "/learn")}
-                    sx={{
-                      mt: 4,
-                      px: 4,
-                      py: 1.5,
-                      borderRadius: "50px",
-                      textTransform: "none",
-                      fontWeight: 700,
-                      background: "linear-gradient(135deg, #1565d8, #003b88)",
-                      boxShadow: "0 15px 35px rgba(21,101,216,0.25)",
-
-                      "&:hover": {
-                        background: "linear-gradient(135deg, #003b88, #1565d8)",
-                      },
-                    }}
-                  >
-                    Learn More
-                  </Button>
-                </Box>
-              </Grid>
-            </Grid>
+              <Typography
+                sx={{
+                  fontWeight: 600,
+                  color: "#102A43",
+                  fontSize: {
+                    xs: "0.85rem",
+                    sm: "0.9rem",
+                    md: "0.95rem",
+                  },
+                }}
+              >
+                {item}
+              </Typography>
+            </Box>
           </Grid>
-        </Container>
+        ))}
+      </Grid>
+
+      <Button
+        variant="contained"
+           onClick={() => (window.location.href = "/learn")}
+        sx={{
+          mt: 3,
+          px: { xs: 3, md: 4 },
+          py: 1.2,
+          borderRadius: "35px",
+          textTransform: "none",
+          fontWeight: 700,
+          fontSize: {
+            xs: "0.9rem",
+            md: "1rem",
+          },
+          background: "linear-gradient(135deg,#1565D8,#003B88)",
+          "&:hover": {
+            background: "linear-gradient(135deg,#003B88,#1565D8)",
+          },
+        }}
+      >
+        Learn More
+      </Button>
+    </Box>
+  </Box>
+</Grid>
+</Grid>
       </Box>
 
       {/* Vision Section */}
@@ -548,8 +603,9 @@ const WhoWeAre = () => {
   src={AiImage3}
   alt="AI Technology"
   sx={{
-    width: "clamp(100%, 110vw, 130%)",
-    height: "clamp(220px, 45vw, 800px)",
+    width:"100%",
+    // width: "clamp(100%, 110vw, 130%)",
+    // height: "clamp(220px, 60vw, 800px)",
     objectFit: "cover",
     borderRadius: "32px",
     boxShadow: "0 25px 70px rgba(16,42,67,0.18)",

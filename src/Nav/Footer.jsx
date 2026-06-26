@@ -1,8 +1,17 @@
 import React from "react";
-import { Box, Container, Typography, Grid, Link, Divider } from "@mui/material";
+import {
+  Box,
+  Container,
+  Typography,
+  Grid,
+  Link,
+  Divider,
+  Stack,
+} from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 const Footer = () => {
   const quickLinks = ["Home", "About", "Projects", "Courses", "Contact"];
@@ -16,161 +25,159 @@ const Footer = () => {
     "Cloud Services",
   ];
 
+  const trustPoints = [
+    "Transparent Communication",
+    "Secure & Scalable Solutions",
+    "On-Time Project Delivery",
+    "Quality-Focused Development",
+    "Dedicated Client Support",
+  ];
+
+  const linkStyle = {
+    color: "#CBD5E1",
+    fontSize: { xs: "0.9rem", md: "0.95rem" },
+    transition: "0.3s",
+    "&:hover": {
+      color: "#60A5FA",
+      pl: { xs: 0, sm: 0.8 },
+    },
+  };
+
   return (
     <Box
       sx={{
         background:
-          "linear-gradient(135deg, #1c2947 0%, #243B6B 50%, #1a2c51 100%)",
+          "linear-gradient(135deg, #17243f 0%, #243B6B 50%, #16213d 100%)",
         color: "#fff",
-        pt: { xs: 5, sm: 6, md: 8 },
-        pb: { xs: 2.5, md: 3 },
-        mt: { xs: 5, md: 8 },
+        pt: { xs: 4, md: 6 },
+        pb: 2,
+        mt: { xs: 4, md: 6 },
       }}
     >
       <Container maxWidth="xl">
         <Grid
           container
-          spacing={{ xs: 4, sm: 5, md: 6 }}
-          sx={{
-            textAlign: { xs: "center", sm: "left" },
-          }}
+          spacing={{ xs: 3, md: 4 }}
+          alignItems="flex-start"
+          sx={{ textAlign: { xs: "center", sm: "left" } }}
         >
-          {/* Company Info */}
-          <Grid item xs={12} sm={6} lg={3}>
+          <Grid item xs={12} sm={6} md={2.4}>
             <Typography
-              variant="h4"
               sx={{
-                fontWeight: 800,
-                mb: 2,
-                fontSize: { xs: "1.8rem", sm: "2rem", md: "2.3rem" },
+                fontWeight: 900,
+                mb: 1.3,
+                fontSize: { xs: "1.8rem", md: "1.9rem" },
               }}
             >
-              Titanobova
+              TITANOBOVA
             </Typography>
 
             <Typography
               sx={{
                 color: "#CBD5E1",
-                lineHeight: 1.8,
-                fontSize: { xs: 14, md: 15 },
-                mb: 2.5,
-                maxWidth: { xs: "100%", sm: 320 },
+                lineHeight: 1.7,
+                fontSize: { xs: "0.9rem", md: "0.95rem" },
+                mb: 1.2,
+                maxWidth: 340,
                 mx: { xs: "auto", sm: 0 },
               }}
             >
-              Titanobova delivers innovative software solutions, scalable SaaS
-              platforms, AI-powered applications, and enterprise-grade digital
-              products that help businesses grow faster and operate smarter.
+              Titanobova builds reliable websites, applications, SaaS platforms,
+              AI-powered tools, and cloud-ready digital products.
             </Typography>
 
             <Typography
               sx={{
                 color: "#60A5FA",
-                fontWeight: 600,
-                fontSize: { xs: 13, md: 14 },
+                fontWeight: 700,
+                fontSize: { xs: "0.9rem", md: "0.95rem" },
               }}
             >
               Innovation • Quality • Reliability
             </Typography>
           </Grid>
 
-          {/* Quick Links */}
-          <Grid item xs={12} sm={6} lg={3}>
-            <Typography sx={{ fontWeight: 700, mb: 2.5, fontSize: 19 }}>
+          <Grid item xs={12} sm={6} md={2.4}>
+            <Typography sx={{ fontWeight: 800, mb: 1.5, fontSize: 18 }}>
               Quick Links
             </Typography>
 
-            <Box sx={{ display: "flex", flexDirection: "column", gap: 1.5 }}>
+            <Stack spacing={1}>
               {quickLinks.map((item) => (
                 <Link
                   key={item}
                   href={item === "Home" ? "/" : `/${item.toLowerCase()}`}
                   underline="none"
-                  sx={{
-                    color: "#CBD5E1",
-                    fontSize: { xs: 14, md: 15 },
-                    transition: "all 0.3s ease",
-                    "&:hover": {
-                      color: "#60A5FA",
-                      pl: { xs: 0, sm: 1 },
-                    },
-                  }}
+                  sx={linkStyle}
                 >
                   {item}
                 </Link>
               ))}
-            </Box>
+            </Stack>
           </Grid>
 
-          {/* Services */}
-          <Grid item xs={12} sm={6} lg={3}>
-            <Typography sx={{ fontWeight: 700, mb: 2.5, fontSize: 19 }}>
-              Services
+          <Grid item xs={12} sm={6} md={2.4}>
+            <Typography sx={{ fontWeight: 800, mb: 1.5, fontSize: 18 }}>
+              Our Services
             </Typography>
 
-            <Box sx={{ display: "flex", flexDirection: "column", gap: 1.5 }}>
+            <Stack spacing={1}>
               {services.map((service) => (
-                <Typography
-                  key={service}
-                  sx={{
-                    color: "#CBD5E1",
-                    fontSize: { xs: 14, md: 15 },
-                  }}
-                >
+                <Typography key={service} sx={linkStyle}>
                   {service}
                 </Typography>
               ))}
-            </Box>
+            </Stack>
           </Grid>
 
-          {/* Contact */}
-          <Grid item xs={12} sm={6} lg={3}>
-            <Typography sx={{ fontWeight: 700, mb: 2.5, fontSize: 19 }}>
+          <Grid item xs={12} sm={6} md={2.4}>
+            <Typography sx={{ fontWeight: 800, mb: 1.5, fontSize: 18 }}>
+              Why Choose Us
+            </Typography>
+
+            <Stack
+              spacing={1}
+              sx={{ alignItems: { xs: "center", sm: "flex-start" } }}
+            >
+              {trustPoints.map((item) => (
+                <Box
+                  key={item}
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 0.8,
+                  }}
+                >
+                  <CheckCircleIcon sx={{ color: "#60A5FA", fontSize: 17 }} />
+                  <Typography sx={linkStyle}>{item}</Typography>
+                </Box>
+              ))}
+            </Stack>
+          </Grid>
+
+          <Grid item xs={12} sm={6} md={2.4}>
+            <Typography sx={{ fontWeight: 800, mb: 1.5, fontSize: 18 }}>
               Contact Us
             </Typography>
 
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 2,
-                alignItems: { xs: "center", sm: "flex-start" },
-              }}
+            <Stack
+              spacing={1.4}
+              sx={{ alignItems: { xs: "center", sm: "flex-start" } }}
             >
-              <Box sx={{ display: "flex", alignItems: "center", gap: 1.3 }}>
-                <EmailIcon sx={{ color: "#60A5FA", fontSize: 22 }} />
-
+              <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                <EmailIcon sx={{ color: "#60A5FA", fontSize: 20 }} />
                 <Link
                   href="mailto:titanobovapvt@gmail.com"
                   underline="none"
-                  sx={{
-                    color: "#CBD5E1",
-                    fontSize: 14,
-                    cursor: "pointer",
-                    "&:hover": {
-                      color: "#60A5FA",
-                    },
-                  }}
+                  sx={linkStyle}
                 >
                   titanobovapvt@gmail.com
                 </Link>
               </Box>
 
-              <Box sx={{ display: "flex", alignItems: "center", gap: 1.3 }}>
-                <PhoneIcon sx={{ color: "#60A5FA", fontSize: 22 }} />
-
-                <Link
-                  href="tel:+918270917589"
-                  underline="none"
-                  sx={{
-                    color: "#CBD5E1",
-                    fontSize: 14,
-                    cursor: "pointer",
-                    "&:hover": {
-                      color: "#60A5FA",
-                    },
-                  }}
-                >
+              <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                <PhoneIcon sx={{ color: "#60A5FA", fontSize: 20 }} />
+                <Link href="tel:+918270917589" underline="none" sx={linkStyle}>
                   +91 8270917589
                 </Link>
               </Box>
@@ -179,42 +186,55 @@ const Footer = () => {
                 sx={{
                   display: "flex",
                   alignItems: "flex-start",
-                  gap: 1.3,
+                  gap: 1,
                   justifyContent: { xs: "center", sm: "flex-start" },
                 }}
               >
                 <LocationOnIcon
-                  sx={{ color: "#60A5FA", mt: 0.2, fontSize: 22 }}
+                  sx={{ color: "#60A5FA", mt: 0.2, fontSize: 20 }}
                 />
-                <Typography sx={{ color: "#CBD5E1", fontSize: 14 }}>
-                  Attur,
+                <Typography
+                  sx={{
+                    color: "#CBD5E1",
+                    fontSize: { xs: "0.9rem", md: "0.95rem" },
+                    lineHeight: 1.6,
+                  }}
+                >
+                  Attur, Salem
                   <br />
-                  Salem, Tamil Nadu,
-                  <br />
-                  India
+                  Tamil Nadu, India
                 </Typography>
               </Box>
-            </Box>
+            </Stack>
           </Grid>
         </Grid>
 
         <Divider
           sx={{
-            borderColor: "rgba(255,255,255,0.1)",
-            mt: { xs: 4, md: 6 },
-            mb: 3,
+            borderColor: "rgba(255,255,255,0.12)",
+            mt: { xs: 3, md: 4 },
+            mb: 2,
           }}
         />
 
-        <Box sx={{ textAlign: "center", px: 2 }}>
-          <Typography sx={{ color: "#94A3B8", fontSize: { xs: 13, md: 14 } }}>
+        <Box sx={{ textAlign: "center", px: 1 }}>
+          <Typography
+            sx={{
+              color: "#94A3B8",
+              fontSize: { xs: "0.85rem", sm: "0.95rem" },
+            }}
+          >
             © {new Date().getFullYear()} Titanobova. All Rights Reserved.
           </Typography>
 
           <Typography
-            sx={{ color: "#64748B", fontSize: { xs: 12, md: 13 }, mt: 1 }}
+            sx={{
+              color: "#64748B",
+              fontSize: { xs: "0.8rem", sm: "0.9rem" },
+              mt: 0.6,
+            }}
           >
-            Building Modern Software Solutions for Businesses Worldwide.
+            Building modern software solutions for businesses worldwide.
           </Typography>
         </Box>
       </Container>

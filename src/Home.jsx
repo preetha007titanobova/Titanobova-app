@@ -141,7 +141,12 @@ const Home = () => {
                 ...bodyStyle,
                 color: "#3b434a",
                 mb: 3,
-                fontWeight:400,
+                               fontSize: {
+              xs: "0.92rem",
+              sm:"1.2rem",
+              md: "1.52rem",
+              lg: "1.05rem",
+            },
                    fontFamily:"math",
               }}
             >
@@ -175,29 +180,24 @@ const Home = () => {
 
       {/* Design Experience Section */}
 <Box sx={{ background: "#eeeeee", py: { xs: 4, sm: 5, md: 6, lg: 9 } }}>
-  <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 3, lg: 4 } }}>
+  <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4, lg: 4 } }}>
     <Box
       sx={{
         display: "grid",
         gridTemplateColumns: {
           xs: "1fr",
           sm: "1fr",
-          md: "0.9fr 1.2fr 0.9fr",
+          md: "0.8fr 1.25fr 0.8fr",
           lg: "0.8fr 1.4fr 0.8fr",
         },
-        gap: { xs: 2.5, md: 2, lg: 3 },
+        gap: { xs: 2.5, sm: 3, md: 2, lg: 3 },
         alignItems: "stretch",
       }}
     >
       {/* Left Slider */}
       <Box
         sx={{
-          minHeight: {
-            xs: 250,
-            sm: 320,
-            md: 520,
-            lg: 650,
-          },
+          minHeight: { xs: 250, sm: 320, md: 430, lg: 650 },
           borderRadius: "18px",
           overflow: "hidden",
           position: "relative",
@@ -209,14 +209,9 @@ const Home = () => {
           src={sliderImages[activeSlide]}
           alt="Better Design"
           sx={{
-            width: "120%",
+            width: "100%",
             height: "100%",
-            minHeight: {
-              xs: 250,
-              sm: 320,
-              md: 520,
-              lg: 650,
-            },
+            minHeight: { xs: 250, sm: 320, md: 430, lg: 650 },
             objectFit: "cover",
             objectPosition: "center",
             display: "block",
@@ -230,22 +225,23 @@ const Home = () => {
         sx={{
           background: "#fff",
           borderRadius: "12px",
-          p: { xs: 2.5, sm: 3, md: 3, lg: 7 },
+          p: { xs: 2.5, sm: 3, md: 2.5, lg: 7 },
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
+          minHeight: { md: 430, lg: "auto" },
         }}
       >
         <Typography
           sx={{
             ...headingStyle,
             color: "#07111f",
-             fontFamily:"-apple-system",
+            fontFamily: "-apple-system",
             mb: 2,
             fontSize: {
               xs: "1.8rem",
               sm: "2.2rem",
-              md: "2.1rem",
+              md: "1.7rem",
               lg: "2.4rem",
             },
           }}
@@ -257,11 +253,12 @@ const Home = () => {
           sx={{
             ...bodyStyle,
             color: "#333",
-            fontWeight:750,
-            fontFamily:"math",
+            fontWeight: 750,
+            fontFamily: "math",
             fontSize: {
               xs: "0.92rem",
-              md: "0.9rem",
+              md: "1.62rem",
+                  sm:"1.5rem",
               lg: "1.05rem",
             },
           }}
@@ -277,12 +274,13 @@ const Home = () => {
           sx={{
             ...bodyStyle,
             color: "#333",
-               fontWeight:750,
-            fontFamily:"math",
+            fontWeight: 750,
+            fontFamily: "math",
             mt: 2,
             fontSize: {
               xs: "0.92rem",
-              md: "0.9rem",
+              sm:"1.5rem",
+                    md: "1.62rem",
               lg: "1.05rem",
             },
           }}
@@ -295,7 +293,13 @@ const Home = () => {
       </Box>
 
       {/* Right Section */}
-      <Box sx={{ display: "grid", gap: { xs: 2, md: 1.5, lg: 2 } }}>
+      <Box
+        sx={{
+          display: "grid",
+          gap: { xs: 2, md: 2, lg: 2.5 },
+          gridTemplateColumns: "1fr",
+        }}
+      >
         <Box
           component="img"
           src={Archi}
@@ -303,12 +307,12 @@ const Home = () => {
           sx={{
             width: "100%",
             height: {
-              xs: 280,
-              sm: 350,
-              md: 220,
-              lg: 400,
+              xs: 480,
+              sm: 700,
+              md: 620,
+              lg: 420,
             },
-            objectFit: "cover",
+        object:"cover",
             borderRadius: "18px",
             boxShadow: "0 30px 80px rgba(16,42,67,0.22)",
             display: "block",
@@ -320,9 +324,12 @@ const Home = () => {
             borderRadius: "18px",
             background: "linear-gradient(135deg, #091c37, #003b88)",
             boxShadow: "0 10px 25px rgba(21,101,216,0.25)",
-            p: { xs: 3, md: 2.5, lg: 4 },
-            minHeight: { xs: 190, md: 185, lg: 260 },
+            p: { xs: 3, md: 2, lg: 4 },
+            minHeight: { xs: 150, md: 100, lg: 200 },
             color: "#fff",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
           }}
         >
           <Typography
@@ -331,7 +338,7 @@ const Home = () => {
               fontSize: {
                 xs: "1.5rem",
                 sm: "1.8rem",
-                md: "1.5rem",
+                md: "1.25rem",
                 lg: "2rem",
               },
               fontWeight: 900,
@@ -343,9 +350,10 @@ const Home = () => {
           <Button
             onClick={() => (window.location.href = "/conversation")}
             sx={{
-              mt: { xs: 3, md: 7 },
-              minWidth: { xs: 56, md: 48 },
-              height: { xs: 56, md: 48 },
+              mt: { xs: 3, md: 2 },
+              width: { xs: 56, md: 45, lg: 56 },
+              minWidth: { xs: 56, md: 45, lg: 56 },
+              height: { xs: 56, md: 45, lg: 56 },
               borderRadius: "50%",
               background: "#c8ffd2",
               color: "#111",
@@ -410,8 +418,14 @@ const Home = () => {
                       sx={{
                         fontFamily:"math",
                         fontWeight: 800,
+                            fontSize: {
+              xs: "0.92rem",
+              sm:"1.5rem",
+                   md: "1.62rem",
+              lg: "1.05rem",
+            },
                         color: openFaq === index ? "#1565d8" : "#111827",
-                        fontSize: { xs: "0.95rem", md: "1.2rem" },
+                       
                       }}
                     >
                       {item.q}
@@ -429,9 +443,14 @@ const Home = () => {
                       sx={{
                         ...bodyStyle,
                         mt: 2,
-                        
+                            fontSize: {
+              xs: "0.92rem",
+              sm:"1.5rem",
+                md: "1.62rem",
+              lg: "1.05rem",
+            },
                         color: "#3e444a",
-                        fontSize: { xs: "0.88rem", md: "0.95rem" },
+                  
                       }}
                     >
                       {item.a}
@@ -460,6 +479,12 @@ const Home = () => {
                   color: "#374151",
                   maxWidth: 420,
                   mb: 3,
+                                fontSize: {
+              xs: "0.92rem",
+              sm:"1.5rem",
+                 md: "1.62rem",
+              lg: "1.05rem",
+            },
                     fontFamily:"math",
                 }}
               >
@@ -479,7 +504,12 @@ const Home = () => {
                   textTransform: "none",
                   fontFamily,
                   fontWeight: 800,
-                  fontSize: { xs: "0.85rem", md: "1rem" },
+                              fontSize: {
+              xs: "0.92rem",
+              sm:"1.2rem",
+              md: "0.82rem",
+              lg: "1.05rem",
+            },
                   "&:hover": { background: "#003b88" },
                 }}
               >
