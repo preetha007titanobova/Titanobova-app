@@ -2,9 +2,9 @@ import React, { useEffect, useRef, useState } from "react";
 import { Box, Container, Typography, Button } from "@mui/material";
 import { keyframes } from "@mui/system";
 
-import about from "../src/assets/about.png";
-import service from "../src/assets/service.png";
-import team from "../src/assets/team.png";
+import about from "../src/assets/about.jpg";
+import service from "../src/assets/service.jpg";
+import team from "../src/assets/team.jpg";
 
 const fontFamily = "'Outfit', 'Figtree', sans-serif";
 

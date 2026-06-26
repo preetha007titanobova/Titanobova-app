@@ -5,10 +5,10 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 
 import Solutions from "./Solutions";
-import Banner from "./assets/Banner.PNG";
-import better from "./assets/better.png";
-import Archi from "./assets/archi.png";
-import Excellence from "./assets/Excellence.png";
+import Banner from "./assets/Banner.jpg";
+import better from "./assets/better.jpg";
+import Archi from "./assets/archi.jpg";
+import Excellence from "./assets/Excellence.jpg";
 
 const faqs = [
   {

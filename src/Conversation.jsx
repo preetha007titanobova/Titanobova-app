@@ -51,40 +51,34 @@ function Conversation() {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    console.log(formData);
-    
+  console.log(formData);
+
   try {
-  const response = await Api.post(
-     "/conversation/create",
-      formData
-    );
+    const response = await Api.post("/conversation/create", formData);
 
+    console.log("data...", response.data);
 
+    if (response.data.success) {
+      toast.success("Message sent successfully!");
 
-    const data = await response.json();
-    console.log('data...')
-    if (response.ok) {
-      // alert("Conversation submitted successfully!");
-
-    toast.success("Message sent successfully!");
-      // Clear form
       setFormData({
         name: "",
         email: "",
         phoneNumber: "",
         message: "",
       });
-
-      console.log(data);
     } else {
-      alert(data.message || "Something went wrong");
+      alert(response.data.message || "Something went wrong");
     }
- } catch (error) {
+  } catch (error) {
     console.error(error);
-    alert("Server error");
+
+    alert(
+      error.response?.data?.message || "Server error"
+    );
   }
 };
 

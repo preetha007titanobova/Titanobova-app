@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Container, Typography } from "@mui/material";
-import stair from "../src/assets/stairs.png";
+import stair from "../src/assets/stairs.jpg";
 
 const BLUE = "#1565d8";
 const DARK_BLUE = "#003b88";

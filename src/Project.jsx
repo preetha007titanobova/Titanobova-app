@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import Services from "./Services";
 import { keyframes } from "@mui/system";
-import projectbanner from "../src/assets/project.png";
+import projectbanner from "../src/assets/project.jpg";
 import { Box, Typography} from "@mui/material";
 import ServiceEnquiry from "./ServiceEnquiry";
 const BLUE = "#1565d8";

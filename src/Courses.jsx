@@ -8,7 +8,7 @@ import DataObjectIcon from "@mui/icons-material/DataObject";
 import React, { useState } from "react";
 import { Box, Typography, Chip, Avatar, Button } from "@mui/material";
 import { keyframes } from "@mui/system";
-import Course from "./assets/Course.png";
+import Course from "./assets/Course.jpg";
 import banner2 from "./assets/Banner2.jpg";
 import CouponEnrollment from "./Coupon.jsx";
 import CourseCoupon from "./Couponcard.jsx";

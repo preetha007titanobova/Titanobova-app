@@ -11,7 +11,7 @@ import {
   Avatar,
 } from "@mui/material";
 import { styled, keyframes } from "@mui/material/styles";
-import trust from "../src/assets/trust.png";
+import trust from "../src/assets/trust.jpg";
 import GroupsIcon from "@mui/icons-material/Groups";
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import PsychologyIcon from "@mui/icons-material/Psychology";
@@ -19,7 +19,7 @@ import CloudDoneIcon from "@mui/icons-material/CloudDone";
 import SecurityIcon from "@mui/icons-material/Security";
 import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import AiImage3 from "./assets/AiImage3.png";
+import AiImage3 from "./assets/AiImage3.jpg";
 import AboutImage from "./assets/about-team.jpg";
 import AiImage from "./assets/ai-tech.jpg";
 
@@ -450,7 +450,7 @@ const WhoWeAre = () => {
               md: 560,
               lg: 750,
             },
-            objectFit: "cover",
+            // objectFit: "cover",
             objectPosition: "center",
             borderRadius: "28px",
             boxShadow: "0 24px 70px rgba(16,42,67,0.16)",
@@ -539,25 +539,23 @@ const WhoWeAre = () => {
             sx={{
               position: "relative",
               width: "100%",
+              
               animation: `${floatImage} 4s ease-in-out infinite`,
             }}
           >
-            <Box
-              component="img"
-              src={AiImage3}
-              alt="AI Technology"
-              sx={{
-                width: "150%",
-                height: {
-                  xs: 220,
-                  sm: 280,
-                  md: 550,
-                },
-                // objectFit: "cover",
-                borderRadius: "32px",
-                boxShadow: "0 25px 70px rgba(16,42,67,0.18)",
-              }}
-            />
+           <Box
+  component="img"
+  src={AiImage3}
+  alt="AI Technology"
+  sx={{
+    width: "clamp(100%, 110vw, 130%)",
+    height: "clamp(220px, 45vw, 800px)",
+    objectFit: "cover",
+    borderRadius: "32px",
+    boxShadow: "0 25px 70px rgba(16,42,67,0.18)",
+    display: "block",
+  }}
+/>
             {/* Floating Badge */}
           </Box>
         </Grid>

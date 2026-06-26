@@ -5,7 +5,7 @@ import MemoryIcon from "@mui/icons-material/Memory";
 import CloudIcon from "@mui/icons-material/Cloud";
 import SecurityIcon from "@mui/icons-material/Security";
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
-import technologybanner from "./assets/technology.png";
+import technologybanner from "./assets/technology.jpg";
 import TechnologyCircleSection from "./technologycircle.jsx";
 
 const technologies = [
