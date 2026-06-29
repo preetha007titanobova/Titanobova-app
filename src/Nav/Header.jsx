@@ -79,7 +79,7 @@ const Header = () => {
               sx={{
                 color: "#163372",
                 fontWeight: 800,
-                fontSize: { xs: "1.4rem", md: "1.8rem" },
+                fontSize: { xs: "1.2rem", md: "1.8rem" },
                 fontFamily: "'Poppins', sans-serif",
                 letterSpacing: "1px",
               }}

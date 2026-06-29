@@ -85,12 +85,7 @@ const Home = () => {
     <Box
   sx={{
     width: "100%",
-    height: {
-      xs: "200px",
-      sm: "280px",
-      md: "420px",
-      lg: "650px", 
-    },
+  
     position: "relative",
     overflow: "hidden",
   }}
@@ -101,8 +96,8 @@ const Home = () => {
           alt="IT Company Banner"
           sx={{
             width: "100%",
-            height: "120%",
-            // objectFit: "cover",
+            height: {md:"100%",lg:"100%",sm:"100%",xs:"100%"},
+            objectFit: "cover",
             display: "block",
           }}
         />
