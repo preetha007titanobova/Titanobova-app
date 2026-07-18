@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import {
   AppBar,
   Toolbar,
@@ -14,16 +15,23 @@ import {
   Menu,
   MenuItem,
 } from "@mui/material";
+
 import MenuIcon from "@mui/icons-material/Menu";
+import { useLocation } from "react-router-dom";
+
 import logo from "../assets/logo.jpg";
 
 const Header = () => {
+  const location = useLocation();
+
+  const currentPath = location.pathname;
+
   const [open, setOpen] = useState(false);
   const [aboutAnchor, setAboutAnchor] = useState(null);
   const [courseAnchor, setCourseAnchor] = useState(null);
 
   const aboutSubMenu = [
-     { text: "About Us", link: "/about" },
+    { text: "About Us", link: "/about" },
     { text: "Who We Are", link: "/who-we-are" },
     { text: "Technology", link: "/technology" },
     { text: "Vision", link: "/about" },
@@ -33,6 +41,10 @@ const Header = () => {
     { text: "Courses", link: "/courses" },
     { text: "Interns", link: "/interapply" },
   ];
+
+  const aboutActive = aboutSubMenu.some((item) => item.link === currentPath);
+
+  const courseActive = courseSubMenu.some((item) => item.link === currentPath);
 
   return (
     <>
@@ -54,6 +66,8 @@ const Header = () => {
             alignItems: "center",
           }}
         >
+          {/* LOGO */}
+
           <Box
             onClick={() => (window.location.href = "/home")}
             sx={{
@@ -70,25 +84,24 @@ const Header = () => {
               sx={{
                 width: { xs: 60, md: 100 },
                 height: "auto",
-                objectFit: "contain",
               }}
             />
 
             <Typography
-              variant="h6"
               sx={{
                 color: "#163372",
                 fontWeight: 800,
                 fontSize: { xs: "1.2rem", md: "1.8rem" },
-                fontFamily: "'Poppins', sans-serif",
+                fontFamily: "'Poppins',sans-serif",
                 letterSpacing: "1px",
               }}
             >
-                TITANOBOVA
+              TITANOBOVA
             </Typography>
           </Box>
 
-          {/* Desktop Menu */}
+          {/* DESKTOP MENU */}
+
           <Box
             sx={{
               display: { xs: "none", md: "flex" },
@@ -96,13 +109,22 @@ const Header = () => {
               alignItems: "center",
             }}
           >
-            <Link href="/home" underline="none" sx={navStyle}>
+            <Link
+              href="/home"
+              underline="none"
+              fontFamily="Inter, sans-serif"
+              sx={navStyle("/home", currentPath)}
+            >
               Home
             </Link>
 
             <Typography
               onMouseEnter={(e) => setAboutAnchor(e.currentTarget)}
-              sx={navStyle}
+              fontFamily="Inter, sans-serif"
+              sx={{
+                ...navStyle("/about", currentPath),
+                color: aboutActive ? "#1976d2" : "#222",
+              }}
             >
               About
             </Typography>
@@ -119,19 +141,32 @@ const Header = () => {
                 <MenuItem
                   key={index}
                   onClick={() => (window.location.href = item.link)}
+                  sx={{
+                    fontFamily: "Poppins",
+                    fontWeight: currentPath === item.link ? 700 : 500,
+
+                    color: currentPath === item.link ? "#1976d2" : "#222",
+                  }}
                 >
                   {item.text}
                 </MenuItem>
               ))}
             </Menu>
 
-            <Link href="/project" underline="none" sx={navStyle}>
+            <Link
+              href="/project"
+              underline="none"
+              sx={navStyle("/project", currentPath)}
+            >
               Projects
             </Link>
 
             <Typography
               onMouseEnter={(e) => setCourseAnchor(e.currentTarget)}
-              sx={navStyle}
+              sx={{
+                ...navStyle("/courses", currentPath),
+                color: courseActive ? "#1976d2" : "#222",
+              }}
             >
               Courses
             </Typography>
@@ -148,13 +183,23 @@ const Header = () => {
                 <MenuItem
                   key={index}
                   onClick={() => (window.location.href = item.link)}
+                  sx={{
+                    fontFamily: "Poppins",
+                    fontWeight: currentPath === item.link ? 700 : 500,
+
+                    color: currentPath === item.link ? "#1976d2" : "#222",
+                  }}
                 >
                   {item.text}
                 </MenuItem>
               ))}
             </Menu>
 
-            <Link href="/customersupport" underline="none" sx={navStyle}>
+            <Link
+              href="/customersupport"
+              underline="none"
+              sx={navStyle("/customersupport", currentPath)}
+            >
               Contact Us
             </Link>
 
@@ -167,23 +212,19 @@ const Header = () => {
                 py: 1,
                 fontSize: "14px",
                 fontWeight: 600,
-                fontFamily: "'Poppins', sans-serif",
                 textTransform: "none",
-                boxShadow: "0 8px 20px rgba(25,118,210,0.25)",
-                "&:hover": {
-                  transform: "translateY(-2px)",
-                  boxShadow: "0 12px 25px rgba(25,118,210,0.35)",
-                },
               }}
             >
               Let's Talk
             </Button>
           </Box>
 
+          {/* MOBILE ICON */}
+
           <IconButton
             sx={{
               display: { xs: "block", md: "none" },
-              color: "#111827",
+              color: "#111",
             }}
             onClick={() => setOpen(true)}
           >
@@ -192,16 +233,16 @@ const Header = () => {
         </Toolbar>
       </AppBar>
 
-      {/* Mobile Drawer */}
+      {/* MOBILE DRAWER */}
+
       <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
         <Box sx={{ width: 260, p: 2 }}>
           <Typography
             sx={{
               fontSize: "1.4rem",
               fontWeight: 800,
-              fontFamily: "'Poppins', sans-serif",
-              mb: 2,
               color: "#163372",
+              mb: 2,
             }}
           >
             Titanobova
@@ -211,28 +252,30 @@ const Header = () => {
             <MobileItem text="Home" link="/home" setOpen={setOpen} />
 
             <Typography sx={mobileTitle}>About</Typography>
-        {aboutSubMenu.map((item, index) => (
-  <MobileItem
-    key={index}
-    text={item.text}
-    link={item.link}
-    setOpen={setOpen}
-    subItem
-  />
-))}
+
+            {aboutSubMenu.map((item, index) => (
+              <MobileItem
+                key={index}
+                text={item.text}
+                link={item.link}
+                setOpen={setOpen}
+                subItem
+              />
+            ))}
 
             <MobileItem text="Projects" link="/project" setOpen={setOpen} />
 
             <Typography sx={mobileTitle}>Courses</Typography>
-        {courseSubMenu.map((item, index) => (
-  <MobileItem
-    key={index}
-    text={item.text}
-    link={item.link}
-    setOpen={setOpen}
-    subItem
-  />
-))}
+
+            {courseSubMenu.map((item, index) => (
+              <MobileItem
+                key={index}
+                text={item.text}
+                link={item.link}
+                setOpen={setOpen}
+                subItem
+              />
+            ))}
 
             <MobileItem
               text="Contact Us"
@@ -242,18 +285,15 @@ const Header = () => {
 
             <Button
               variant="contained"
+              fullWidth
               onClick={() => {
                 setOpen(false);
+
                 window.location.href = "/conversation";
               }}
-              fullWidth
               sx={{
                 mt: 2,
                 borderRadius: "30px",
-                py: 1,
-                fontSize: "14px",
-                fontWeight: 600,
-                fontFamily: "'Poppins', sans-serif",
                 textTransform: "none",
               }}
             >
@@ -266,69 +306,99 @@ const Header = () => {
   );
 };
 
-const MobileItem = ({ text, link, setOpen, subItem = false }) => (
-  <ListItem
-    component="a"
-    href={link}
-    onClick={() => setOpen(false)}
-    sx={{
-      borderRadius: "10px",
-    
-      mb: 1,
-      pl: subItem ? 3.5 : 2,
-      cursor: "pointer",
-      position: "relative",
-      "&:hover": {
-        bgcolor: "#a5b4eb",
-      },
-      "&::before": subItem
-        ? {
-            content: '""',
-            position: "absolute",
-            left: 14,
-            top: "50%",
-            transform: "translateY(-50%)",
-            width: 6,
-            height: 6,
-            borderRadius: "50%",
-            bgcolor: "#1976d2",
-          }
-        : {},
-    }}
-  >
-    <ListItemText
-      primary={text}
-      primaryTypographyProps={{
-        fontSize: "15px",
-        fontWeight: subItem ? 500 : 600,
-        fontFamily: "'Poppins', sans-serif",
-        color: "#222",
-      }}
-    />
-  </ListItem>
-);
+const MobileItem = ({ text, link, setOpen, subItem = false }) => {
+  const location = useLocation();
 
-const navStyle = {
-  color: "#222",
+  const active = location.pathname === link;
+
+  return (
+    <ListItem
+      component="a"
+      href={link}
+      onClick={() => setOpen(false)}
+      sx={{
+        borderRadius: "10px",
+
+        mb: 1,
+
+        pl: subItem ? 3.5 : 2,
+
+        backgroundColor: active ? "#dbeafe" : "transparent",
+
+        position: "relative",
+
+        "&:hover": {
+          backgroundColor: "#a5b4eb",
+        },
+      }}
+    >
+      <ListItemText
+        primary={text}
+        primaryTypographyProps={{
+          fontSize: "15px",
+
+          fontWeight: active ? 700 : 500,
+
+          color: active ? "#1976d2" : "#222",
+
+          fontFamily: "Poppins",
+        }}
+      />
+    </ListItem>
+  );
+};
+
+const navStyle = (path, currentPath) => ({
+  color: currentPath === path ? "#1976d2" : "#222",
+
   fontSize: "15px",
-  fontWeight: 600,
-  fontFamily: "'Poppins', sans-serif",
+
+  fontWeight: currentPath === path ? 800 : 600,
+
+  fontFamily: "Poppins",
+
   cursor: "pointer",
+
   position: "relative",
-  transition: "all 0.3s ease",
+
   textDecoration: "none",
+
+  "&:after": {
+    content: '""',
+
+    position: "absolute",
+
+    bottom: -8,
+
+    left: 0,
+
+    height: "2px",
+
+    backgroundColor: "#1976d2",
+
+    width: currentPath === path ? "100%" : "0%",
+
+    transition: "0.3s",
+  },
+
   "&:hover": {
     color: "#1976d2",
   },
-};
+});
 
 const mobileTitle = {
   mt: 1.5,
+
   mb: 1,
+
   fontSize: "13px",
+
   fontWeight: 800,
+
   color: "#163372",
+
   textTransform: "uppercase",
+
   letterSpacing: "1px",
 };
 
