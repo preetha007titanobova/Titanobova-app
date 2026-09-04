@@ -69,6 +69,7 @@ const internships = [
 const InternshipApply = () => {
   const [showForm, setShowForm] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -104,7 +105,6 @@ const InternshipApply = () => {
     try {
      
       await Api.post("/intern/apply", formData);
-
       toast.success(`${formData.internType} application submitted!`);
          console.log("formData",formData)
       setFormData({
@@ -394,7 +394,8 @@ const InternshipApply = () => {
                     },
                   }}
                 >
-                  Submit Application
+                  {isSubmitted ? "Submitting..." : "Submit Application"}
+              
                 </Button>
 
                 <Button

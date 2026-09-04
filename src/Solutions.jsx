@@ -255,7 +255,7 @@ const Solutions = () => {
   const [mountAnimKey, setMountAnimKey] = useState(0);
   const [mountAnimDone, setMountAnimDone] = useState(false);
   const timeoutsRef = useRef([]);
-
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const clear = useCallback(() => {
     timeoutsRef.current.forEach(clearTimeout);
     timeoutsRef.current = [];
@@ -616,6 +616,7 @@ const Solutions = () => {
             {isExpanded && phase !== "collapsing"
               ? "Show Less Services"
               : "View All Services"}
+        
           </Button>
         </Box>
       </Container>

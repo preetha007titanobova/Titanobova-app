@@ -313,7 +313,7 @@ const CourseCard = ({ course }) => {
 
 const Courses = () => {
   const [showAllCourses, setShowAllCourses] = useState(false);
-
+ const [isSubmitted, setIsSubmitted] = useState(false);
   return (
     <Box
       sx={{
@@ -537,7 +537,8 @@ const Courses = () => {
                 },
               }}
             >
-              {showAllCourses ? "Show Less Courses" : "Explore Courses"}
+              {isSubmitted ? "Submitting..." : showAllCourses ? "Show Less Courses" : "Explore Courses"}
+             
             </Button>
           </Box>
         </Box>

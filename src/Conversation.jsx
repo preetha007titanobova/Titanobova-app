@@ -43,7 +43,7 @@ function Conversation() {
     phoneNumber: "",
     message: "",
   });
-
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -238,7 +238,7 @@ const handleSubmit = async (e) => {
                 },
               }}
             >
-              Submit Conversation
+              {isSubmitted ? "Submitting..." : "Submit Conversation"}
             </Button>
           </Stack>
         </Box>

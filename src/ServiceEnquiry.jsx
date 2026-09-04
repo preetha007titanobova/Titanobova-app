@@ -39,7 +39,7 @@ const ServiceEnquiry = () => {
     otherService: "",
     description: "",
   });
-
+   const [isSubmitted, setIsSubmitted] = useState(false);
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -238,7 +238,7 @@ const ServiceEnquiry = () => {
                   "&:hover": { bgcolor: "#102a43" },
                 }}
               >
-                Submit Enquiry
+                {isSubmitted ? "Submitting..." : "Submit Enquiry"}
               </Button>
             </Stack>
           </Box>
