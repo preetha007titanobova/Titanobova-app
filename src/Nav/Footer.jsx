@@ -14,7 +14,13 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 const Footer = () => {
-  const quickLinks = ["Home", "About", "Projects", "Courses", "Contact"];
+  const quickLinks = [
+    { text: "Home", link: "/" },
+    { text: "About", link: "/about" },
+    { text: "Projects", link: "/project" },
+    { text: "Courses", link: "/courses" },
+    { text: "Contact", link: "/customersupport" },
+  ];
 
   const services = [
     "Web Development",
@@ -41,6 +47,15 @@ const Footer = () => {
       color: "#60A5FA",
       pl: { xs: 0, sm: 0.8 },
     },
+  };
+   const linkStyles = {
+    color: "#CBD5E1",
+    fontSize: { xs: "0.9rem", md: "0.95rem" },
+    transition: "0.3s",
+    // "&:hover": {
+    //   color: "#60A5FA",
+    //   pl: { xs: 0, sm: 0.8 },
+    // },
   };
 
   return (
@@ -103,14 +118,14 @@ const Footer = () => {
             </Typography>
 
             <Stack spacing={1}>
-              {quickLinks.map((item) => (
+              {quickLinks.map((link) => (
                 <Link
-                  key={item}
-                  href={item === "Home" ? "/" : `/${item.toLowerCase()}`}
+                  key={link.text}
+                  href={link.link}
                   underline="none"
                   sx={linkStyle}
                 >
-                  {item}
+                  {link.text}
                 </Link>
               ))}
             </Stack>
@@ -123,7 +138,7 @@ const Footer = () => {
 
             <Stack spacing={1}>
               {services.map((service) => (
-                <Typography key={service} sx={linkStyle}>
+                <Typography key={service} sx={linkStyles}>
                   {service}
                 </Typography>
               ))}
@@ -149,7 +164,7 @@ const Footer = () => {
                   }}
                 >
                   <CheckCircleIcon sx={{ color: "#60A5FA", fontSize: 17 }} />
-                  <Typography sx={linkStyle}>{item}</Typography>
+                  <Typography sx={linkStyles}>{item}</Typography>
                 </Box>
               ))}
             </Stack>
