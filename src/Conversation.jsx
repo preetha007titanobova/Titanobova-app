@@ -57,6 +57,7 @@ const handleSubmit = async (e) => {
   console.log(formData);
 
   try {
+    setIsSubmitted(true);
     const response = await Api.post("/conversation/create", formData);
 
     console.log("data...", response.data);
@@ -220,6 +221,7 @@ const handleSubmit = async (e) => {
               type="submit"
               variant="contained"
               size="large"
+              disabled={isSubmitted}
               endIcon={<SendIcon />}
               sx={{
                 mt: 1,

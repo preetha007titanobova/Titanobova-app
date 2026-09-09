@@ -16,6 +16,7 @@ import {
 import axios from "axios";
 import Api from "./Api.js";
 import { toast } from "react-toastify";
+
 const CustomerSupportForm = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -54,48 +55,45 @@ const CustomerSupportForm = () => {
     });
   };
 
- const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  if (!formData.name || !formData.email || !formData.phone) {
-    toast.warning("Please fill all required fields");
-    return;
-  }
+    if (!formData.name || !formData.email || !formData.phone) {
+      toast.warning("Please fill all required fields");
+      return;
+    }
 
-  try {
+    try {
+      setLoading(true);
+      const response = await Api.post("/customersupport/create", formData);
 
-    const response = await Api.post(
-      "/customersupport/create",
-      formData
-    );
+      console.log("formData", formData);
 
-    console.log("formData", formData);
+      toast.success(
+        response.data.message ||
+          "Your request has been submitted successfully!",
+      );
+      console.log("Response:", response.data);
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        supportType: "Course Support",
+        courseName: "",
+        projectType: "",
+        message: "",
+      });
+    } catch (error) {
+      console.log(error);
 
-    toast.success(
-      response.data.message ||
-        "Your request has been submitted successfully!"
-    );
-
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      supportType: "Course Support",
-      courseName: "",
-      projectType: "",
-      message: "",
-    });
-  } catch (error) {
-    console.log(error);
-
-    toast.error(
-      error.response?.data?.message ||
-        "Something went wrong. Please try again."
-    );
-  } finally {
-    setLoading(false);
-  }
-};
+      toast.error(
+        error.response?.data?.message ||
+          "Something went wrong. Please try again.",
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <Box
@@ -258,7 +256,7 @@ const CustomerSupportForm = () => {
                 fontSize: 16,
               }}
             >
-              {loading ? "Submitting..." : "Submit Request"}
+              {loading ? "Submitting..." : "Submit Customer Request"}
             </Button>
           </Box>
         </Paper>

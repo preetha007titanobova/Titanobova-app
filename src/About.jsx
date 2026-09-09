@@ -430,10 +430,10 @@ export default function App() {
       </Box>
 
       {/* Services */}
-    <Box id="services" sx={{ py: { xs: 6, md: 10 }, px: { xs: 2, md: 6 } }}>
+    <Box id="services" sx={{ py: { xs: 6, md: 5 }, px: { xs: 2, md: 6 } }}>
         <Container maxWidth="lg">
           <Reveal>
-            <Box sx={{ textAlign: "center", mb: 5 }}>
+            <Box sx={{ textAlign: "center", mb: 3 }}>
               <Typography sx={{ display: "inline-block", bgcolor: "#eff6ff", color: "#2563eb", fontSize: 12, fontWeight: 800, letterSpacing: 2, textTransform: "uppercase", px: 2, py: 0.8, borderRadius: 2, mb: 2 }}>
                 What We Deliver
               </Typography>

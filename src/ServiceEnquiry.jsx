@@ -64,6 +64,8 @@ const ServiceEnquiry = () => {
     }
 
     try {
+
+      setIsSubmitted(true);
       await Api.post("/serviceenquiry/create", formData);
       toast.success("Your enquiry submitted successfully!");
 
@@ -78,6 +80,8 @@ const ServiceEnquiry = () => {
       });
     } catch (error) {
       toast.error(error.response?.data?.message || "Submission failed");
+    }finally {
+      setIsSubmitted(false);
     }
   };
 
@@ -227,6 +231,7 @@ const ServiceEnquiry = () => {
               <Button
                 type="submit"
                 variant="contained"
+                disabled={isSubmitted}
                 endIcon={<SendIcon />}
                 fullWidth
                 sx={{

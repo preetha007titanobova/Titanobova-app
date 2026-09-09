@@ -9,7 +9,13 @@ import {
   Stack,
   Chip,
   MenuItem,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  IconButton,
 } from "@mui/material";
+
+import CloseIcon from "@mui/icons-material/Close";
 import WorkIcon from "@mui/icons-material/Work";
 import SchoolIcon from "@mui/icons-material/School";
 import PaidIcon from "@mui/icons-material/Paid";
@@ -98,15 +104,21 @@ const InternshipApply = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-   if (!formData.name || !formData.email || !formData.contact || !formData.internType || !formData.internChoice) {
+    if (
+      !formData.name ||
+      !formData.email ||
+      !formData.contact ||
+      !formData.internType ||
+      !formData.internChoice
+    ) {
       alert("Please fill all required fields");
       return;
     }
     try {
-     
+      setIsSubmitted(true);
       await Api.post("/intern/apply", formData);
       toast.success(`${formData.internType} application submitted!`);
-         console.log("formData",formData)
+      console.log("formData", formData);
       setFormData({
         name: "",
         email: "",
@@ -118,7 +130,8 @@ const InternshipApply = () => {
       setShowForm(false);
     } catch (error) {
       toast.error(error.response?.data?.message || "Application failed");
-    }finally {
+    } finally {
+      setIsSubmitted(false);
       setLoading(false);
     }
   };
@@ -135,8 +148,6 @@ const InternshipApply = () => {
     >
       <Container maxWidth="lg">
         <Box sx={{ textAlign: "center", mb: 5 }}>
-      
-
           <Typography
             variant="h3"
             fontWeight={900}
@@ -294,30 +305,54 @@ const InternshipApply = () => {
           ))}
         </Box>
 
-        {showForm && (
-          <Paper
-            elevation={0}
+        <Dialog
+          open={showForm}
+          onClose={() => setShowForm(false)}
+          fullWidth
+          maxWidth="sm"
+          PaperProps={{
+            sx: {
+              borderRadius: "24px",
+              p: { xs: 1, sm: 2 },
+              boxShadow: "0 25px 80px rgba(15, 48, 118, 0.25)",
+            },
+          }}
+        >
+          <DialogTitle
             sx={{
-              mt: 5,
-              maxWidth: 620,
-              mx: "auto",
-              p: { xs: 3, md: 4 },
-              borderRadius: "26px",
-              boxShadow: "0 25px 70px rgba(15, 48, 118, 0.16)",
-              border: "1px solid rgba(21,101,216,0.12)",
+              textAlign: "center",
+              color: "#102a43",
+              fontWeight: 900,
+              position: "relative",
+              pb: 1,
             }}
           >
-            <Stack alignItems="center" spacing={1} mb={3}>
-              <SchoolIcon sx={{ fontSize: 42, color: "#0f3076" }} />
+            <SchoolIcon
+              sx={{
+                fontSize: 42,
+                color:
+                  formData.internType === "Paid Intern" ? "#16A34A" : "#2563EB",
+                display: "block",
+                mx: "auto",
+                mb: 1,
+              }}
+            />
+            {formData.internType} Application
+            <IconButton
+              onClick={() => setShowForm(false)}
+              sx={{
+                position: "absolute",
+                right: 12,
+                top: 12,
+                color: "#64748B",
+              }}
+            >
+              <CloseIcon />
+            </IconButton>
+          </DialogTitle>
 
-              <Typography variant="h5" fontWeight={900} color="#102a43">
-                {formData.internType} Application
-              </Typography>
-
-              <Typography color="text.secondary" fontSize={14}>
-                Fill your details to apply.
-              </Typography>
-            </Stack>
+          <DialogContent>
+          
 
             <Box component="form" onSubmit={handleSubmit}>
               <Stack spacing={2}>
@@ -373,46 +408,69 @@ const InternshipApply = () => {
                   disabled
                 />
 
-                <Button
-                  type="submit"
-                  variant="contained"
-                  endIcon={<SendIcon />}
+                <Box
                   sx={{
-                    py: 1.5,
-                    borderRadius: "14px",
-                    textTransform: "none",
-                    fontWeight: 900,
-                    bgcolor:
-                      formData.internType === "Paid Intern"
-                        ? "#16A34A"
-                        : "#2563EB",
-                    "&:hover": {
+                    display: "flex",
+                    gap: 2,
+                    width: "100%",
+                  }}
+                >
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    disabled={isSubmitted}
+                    // endIcon={!isSubmitted && <SendIcon />}
+                    sx={{
+                      width: "50%",
+                      py: 1.0,
+                      borderRadius: "14px",
+                      textTransform: "none",
+                      fontWeight: 900,
                       bgcolor:
                         formData.internType === "Paid Intern"
-                          ? "#15803D"
-                          : "#1D4ED8",
-                    },
-                  }}
-                >
-                  {isSubmitted ? "Submitting..." : "Submit Application"}
-              
-                </Button>
+                          ? "#16A34A"
+                          : "#2563EB",
 
-                <Button
-                  type="button"
-                  onClick={() => setShowForm(false)}
-                  sx={{
-                    textTransform: "none",
-                    color: "#64748b",
-                    fontWeight: 700,
-                  }}
-                >
-                  Cancel
-                </Button>
+                      "&:hover": {
+                        bgcolor:
+                          formData.internType === "Paid Intern"
+                            ? "#15803D"
+                            : "#1D4ED8",
+                      },
+
+                      "&:disabled": {
+                        bgcolor: "#94A3B8",
+                        color: "#fff",
+                      },
+                    }}
+                  >
+                    {isSubmitted ? "Submitting..." : "Submit Application"}
+                  </Button>
+
+                  <Button
+                    type="button"
+                    variant="contained"
+                    onClick={() => setShowForm(false)}
+                    sx={{
+                      width: "50%",
+                      py: 1.5,
+                      borderRadius: "14px",
+                      textTransform: "none",
+                      bgcolor: "#64748B",
+                      fontWeight: 900,
+
+                      "&:hover": {
+                        bgcolor: "#475569",
+                      },
+                    }}
+                  >
+                    Cancel
+                  </Button>
+                </Box>
               </Stack>
             </Box>
-          </Paper>
-        )}
+          </DialogContent>
+        </Dialog>
       </Container>
     </Box>
   );
