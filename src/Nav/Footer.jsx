@@ -48,7 +48,7 @@ const Footer = () => {
       pl: { xs: 0, sm: 0.8 },
     },
   };
-   const linkStyles = {
+  const linkStyles = {
     color: "#CBD5E1",
     fontSize: { xs: "0.9rem", md: "0.95rem" },
     transition: "0.3s",
@@ -146,81 +146,158 @@ const Footer = () => {
           </Grid>
 
           <Grid item xs={12} sm={6} md={2.4}>
-            <Typography sx={{ fontWeight: 800, mb: 1.5, fontSize: 18 }}>
-              Why Choose Us
-            </Typography>
-
-            <Stack
-              spacing={1}
-              sx={{ alignItems: { xs: "center", sm: "flex-start" } }}
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                textAlign: "center",
+              }}
             >
-              {trustPoints.map((item) => (
-                <Box
-                  key={item}
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 0.8,
-                  }}
-                >
-                  <CheckCircleIcon sx={{ color: "#60A5FA", fontSize: 17 }} />
-                  <Typography sx={linkStyles}>{item}</Typography>
-                </Box>
-              ))}
-            </Stack>
+              <Typography
+                sx={{
+                  fontWeight: 800,
+                  mb: 1.5,
+                  fontSize: 18,
+                }}
+              >
+                Why Choose Us
+              </Typography>
+
+              <Stack
+                spacing={1}
+                sx={{
+                  alignItems: "flex-start",
+                }}
+              >
+                {trustPoints.map((item) => (
+                  <Box
+                    key={item}
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 0.8,
+                    }}
+                  >
+                    <CheckCircleIcon
+                      sx={{
+                        color: "#60A5FA",
+                        fontSize: 17,
+                      }}
+                    />
+                    <Typography sx={linkStyles}>{item}</Typography>
+                  </Box>
+                ))}
+              </Stack>
+            </Box>
           </Grid>
 
           <Grid item xs={12} sm={6} md={2.4}>
-            <Typography sx={{ fontWeight: 800, mb: 1.5, fontSize: 18 }}>
-              Contact Us
-            </Typography>
-
-            <Stack
-              spacing={1.4}
-              sx={{ alignItems: { xs: "center", sm: "flex-start" } }}
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                textAlign: "center",
+              }}
             >
-              <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                <EmailIcon sx={{ color: "#60A5FA", fontSize: 20 }} />
-                <Link
-                  href="mailto:titanobovapvt@gmail.com"
-                  underline="none"
-                  sx={linkStyle}
-                >
-                  titanobovapvt@gmail.com
-                </Link>
-              </Box>
-
-              <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                <PhoneIcon sx={{ color: "#60A5FA", fontSize: 20 }} />
-                <Link href="tel:+918270917589" underline="none" sx={linkStyle}>
-                  +91 8270917589
-                </Link>
-              </Box>
-
-              <Box
+              <Typography
                 sx={{
-                  display: "flex",
-                  alignItems: "flex-start",
-                  gap: 1,
-                  justifyContent: { xs: "center", sm: "flex-start" },
+                  fontWeight: 800,
+                  mb: 1.5,
+                  fontSize: 18,
                 }}
               >
-                <LocationOnIcon
-                  sx={{ color: "#60A5FA", mt: 0.2, fontSize: 20 }}
-                />
-                <Typography
+                Contact Us
+              </Typography>
+
+              <Stack
+                spacing={1.4}
+                sx={{
+                  alignItems: "flex-start",
+                }}
+              >
+                {/* Email */}
+                <Box
                   sx={{
-                    color: "#CBD5E1",
-                    fontSize: { xs: "0.9rem", md: "0.95rem" },
-                    lineHeight: 1.6,
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 1,
                   }}
                 >
-                  Attur, Salem
-                  <br />
-                  Tamil Nadu, India
-                </Typography>
-              </Box>
-            </Stack>
+                  <EmailIcon
+                    sx={{
+                      color: "#60A5FA",
+                      fontSize: 20,
+                    }}
+                  />
+
+                  <Link
+                    href="mailto:titanobovapvt@gmail.com"
+                    underline="none"
+                    sx={linkStyle}
+                  >
+                    titanobovapvt@gmail.com
+                  </Link>
+                </Box>
+
+                {/* Phone */}
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 1,
+                  }}
+                >
+                  <PhoneIcon
+                    sx={{
+                      color: "#60A5FA",
+                      fontSize: 20,
+                    }}
+                  />
+
+                  <Link
+                    href="tel:+918270917589"
+                    underline="none"
+                    sx={linkStyle}
+                  >
+                    +91 8270917589
+                  </Link>
+                </Box>
+
+                {/* Location */}
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "flex-start",
+                    gap: 1,
+                  }}
+                >
+                  <LocationOnIcon
+                    sx={{
+                      color: "#60A5FA",
+                      mt: 0.2,
+                      fontSize: 20,
+                    }}
+                  />
+
+                  <Typography
+                    sx={{
+                      color: "#CBD5E1",
+                      fontSize: {
+                        xs: "0.9rem",
+                        md: "0.95rem",
+                      },
+                      lineHeight: 1.6,
+                    }}
+                  >
+                    Attur, Salem
+                    <br />
+                    Tamil Nadu, India
+                  </Typography>
+                </Box>
+              </Stack>
+            </Box>
           </Grid>
         </Grid>
 

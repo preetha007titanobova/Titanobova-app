@@ -144,7 +144,7 @@ const Header = () => {
                   sx={{
                     fontFamily: "Poppins",
                     fontWeight: currentPath === item.link ? 700 : 500,
-
+                  marginLeft:"10px",
                     color: currentPath === item.link ? "#1976d2" : "#222",
                   }}
                 >
@@ -234,119 +234,139 @@ const Header = () => {
       </AppBar>
 
       {/* MOBILE DRAWER */}
+<Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
+<Box sx={{ width: 150, p: 2 }}>
 
-      <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
-        <Box sx={{ width: 260, p: 2 }}>
-          <Typography
-            sx={{
-              fontSize: "1.4rem",
-              fontWeight: 800,
-              color: "#163372",
-              mb: 2,
-            }}
-          >
-            Titanobova
-          </Typography>
 
-          <List>
-            <MobileItem text="Home" link="/home" setOpen={setOpen} />
+<Typography
+  sx={{
+    fontSize: "1.4rem",
+    fontWeight: 800,
+    color: "#163372",
+    mb: 2,
+  }}
+>
+  Titanobova
+</Typography>
 
-            <Typography sx={mobileTitle}>About</Typography>
+<List>
 
-            {aboutSubMenu.map((item, index) => (
-              <MobileItem
-                key={index}
-                text={item.text}
-                link={item.link}
-                setOpen={setOpen}
-                subItem
-              />
-            ))}
+  {/* Home */}
+  <MobileItem
+    text="Home"
+    link="/home"
+    setOpen={setOpen}
+  />
 
-            <MobileItem text="Projects" link="/project" setOpen={setOpen} />
+  {/* About */}
+  <Typography sx={mobileTitle}>
+    About
+  </Typography>
 
-            <Typography sx={mobileTitle}>Courses</Typography>
+  {aboutSubMenu.map((item, index) => (
+    <MobileItem
+      key={index}
+      text={item.text}
+      link={item.link}
+      setOpen={setOpen}
+    />
+  ))}
 
-            {courseSubMenu.map((item, index) => (
-              <MobileItem
-                key={index}
-                text={item.text}
-                link={item.link}
-                setOpen={setOpen}
-                subItem
-              />
-            ))}
+  {/* Projects */}
+  <MobileItem
+    text="Projects"
+    link="/project"
+    setOpen={setOpen}
+  />
 
-            <MobileItem
-              text="Contact Us"
-              link="/customersupport"
-              setOpen={setOpen}
-            />
+  {/* Courses */}
+  <Typography sx={mobileTitle}>
+    Courses
+  </Typography>
 
-            <Button
-              variant="contained"
-              fullWidth
-              onClick={() => {
-                setOpen(false);
+  {courseSubMenu.map((item, index) => (
+    <MobileItem
+      key={index}
+      text={item.text}
+      link={item.link}
+      setOpen={setOpen}
+    />
+  ))}
 
-                window.location.href = "/conversation";
-              }}
-              sx={{
-                mt: 2,
-                borderRadius: "30px",
-                textTransform: "none",
-              }}
-            >
-              Let's Talk
-            </Button>
-          </List>
-        </Box>
-      </Drawer>
+  {/* Contact */}
+  <MobileItem
+    text="Contact Us"
+    link="/customersupport"
+    setOpen={setOpen}
+  />
+
+  {/* Let's Talk */}
+  <Button
+    variant="contained"
+    fullWidth
+    onClick={() => {
+      setOpen(false);
+      window.location.href = "/conversation";
+    }}
+    sx={{
+      mt: 2,
+      borderRadius: "30px",
+      textTransform: "none",
+    }}
+  >
+    Let's Talk
+  </Button>
+
+</List>
+
+
+  </Box>
+</Drawer>
+
     </>
   );
 };
 
-const MobileItem = ({ text, link, setOpen, subItem = false }) => {
-  const location = useLocation();
+const MobileItem = ({ text, link, setOpen }) => {
+const location = useLocation();
 
-  const active = location.pathname === link;
+const active = location.pathname === link;
 
-  return (
-    <ListItem
-      component="a"
-      href={link}
-      onClick={() => setOpen(false)}
-      sx={{
-        borderRadius: "10px",
+return (
+<ListItem
+component="a"
+href={link}
+onClick={() => setOpen(false)}
+sx={{
+borderRadius: "10px",
+mb: 1,
+pl: 2,
+pr: 2,
+minHeight: "42px",
 
-        mb: 1,
 
-        pl: subItem ? 3.5 : 2,
+    backgroundColor: active ? "#dbeafe" : "transparent",
 
-        backgroundColor: active ? "#dbeafe" : "transparent",
+    "&:hover": {
+      backgroundColor: "#a5b4eb",
+    },
+  }}
+>
+  <ListItemText
+    primary={text}
+    primaryTypographyProps={{
+      fontSize: "15px",
+      fontWeight: active ? 700 : 500,
+      color: active ? "#1976d2" : "#222",
+      fontFamily: "Poppins",
+    }}
+  />
+</ListItem>
 
-        position: "relative",
 
-        "&:hover": {
-          backgroundColor: "#a5b4eb",
-        },
-      }}
-    >
-      <ListItemText
-        primary={text}
-        primaryTypographyProps={{
-          fontSize: "15px",
-
-          fontWeight: active ? 700 : 500,
-
-          color: active ? "#1976d2" : "#222",
-
-          fontFamily: "Poppins",
-        }}
-      />
-    </ListItem>
-  );
+);
 };
+
 
 const navStyle = (path, currentPath) => ({
   color: currentPath === path ? "#1976d2" : "#222",
@@ -388,7 +408,7 @@ const navStyle = (path, currentPath) => ({
 
 const mobileTitle = {
   mt: 1.5,
-
+  ml:2,
   mb: 1,
 
   fontSize: "13px",
