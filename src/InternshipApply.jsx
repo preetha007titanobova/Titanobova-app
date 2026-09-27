@@ -117,8 +117,9 @@ const InternshipApply = () => {
     try {
       setIsSubmitted(true);
       await Api.post("/intern/apply", formData);
+
       toast.success(`${formData.internType} application submitted!`);
-      console.log("formData", formData);
+
       setFormData({
         name: "",
         email: "",
@@ -352,10 +353,9 @@ const InternshipApply = () => {
           </DialogTitle>
 
           <DialogContent>
-          
-
             <Box component="form" onSubmit={handleSubmit}>
               <Stack spacing={2}>
+                <br />
                 <TextField
                   label="Full Name"
                   name="name"
